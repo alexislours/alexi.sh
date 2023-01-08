@@ -37,7 +37,7 @@
                     <div class="flex flex-wrap gap-4 md:gap-2 mt-4">
                         {#each tags as tag}
                             <div class="flex items-center">
-                                <Tag text={`${tag.text} (${tag.count})`} />
+                                <Tag text={tag.text} count={tag.count} />
                             </div>
                         {/each}
                     </div>
