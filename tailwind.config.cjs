@@ -37,6 +37,18 @@ module.exports = {
             'blockquote p:last-of-type::after': false,
             'blockquote': {
               fontStyle: 'normal',
+            },
+            'h1 a': {
+              textDecoration: 'none',
+            },
+            'h2 a': {
+              textDecoration: 'none',
+            },
+            'h3 a': {
+              textDecoration: 'none',
+            },
+            'h4 a': {
+              textDecoration: 'none',
             }
           }
         }
