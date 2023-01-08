@@ -1,5 +1,4 @@
-import remarkPlugins from './src/plugins/remark/index.js';
-import rehypePlugins from './src/plugins/rehype/index.js';
+import relativeImages from 'mdsvex-relative-images';
 import rehypeExternalLinks from 'rehype-external-links';
 import rehypeSlug from 'rehype-slug';
 import rehypeAutolinkHeadings from 'rehype-autolink-headings';
@@ -10,10 +9,9 @@ export default {
 	smartypants: {
 		dashes: 'oldschool'
 	},
-	remarkPlugins: [...Object.values(remarkPlugins)],
+	remarkPlugins: [relativeImages],
 	rehypePlugins: [
 		[rehypeExternalLinks, { target: '_blank', rel: ['noopener', 'noreferrer'] }],
-		...Object.values(rehypePlugins),
 		rehypeSlug,
 		[rehypeImgSize, { dir: 'static' }],
 		[rehypeAutolinkHeadings, {
