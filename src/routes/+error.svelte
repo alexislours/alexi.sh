@@ -2,6 +2,8 @@
     import { page } from "$app/stores";
 </script>
 
+<img src="/error.webp" alt="404" class="mx-auto w-80 aspect-square" />
+
 <div class="mx-auto w-64 text-center">
     <h1 class="text-9xl font-bold">{$page.status}</h1>
     <p class="text-2xl font-semibold">{$page.error?.message}</p>
