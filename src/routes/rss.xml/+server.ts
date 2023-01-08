@@ -11,7 +11,7 @@ export async function GET() {
 	return new Response(xml(posts), {
 		headers: {
 			'Cache-Control': `max-age=0, s-maxage=${600}`,
-			'Content-Type': 'application/xml'
+			'Content-Type': 'application/rss+xml'
 		}
 	});
 }
