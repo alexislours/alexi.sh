@@ -72,7 +72,7 @@ While the [Web Speech API](https://developer.mozilla.org/en-US/docs/Web/API/Web_
 This isn't related to the iOS dictation or Siri, both of which will still work just fine and aren't accessible to websites. A demo of the Web Speech API by Google can be found [at this link](https://www.google.com/intl/en/chrome/demos/speech.html).
 
 ### MediaDevices.getUserMedia()
-The `MediaDeviceInfo` can be used to track user across sessions on a single origin through its `deviceId` property of a webcam, speaker, or camera. Access to said device could also be a privacy risk. This means that most sites requiring access to the microphone or cameras of the device wont work.
+The `MediaDeviceInfo` can be used to track user across sessions on a single origin through its `deviceId` property of a webcam, speaker, or camera. Access to said device could also be a privacy risk. This means that most sites requiring access to the microphone or cameras of the device won't work.
 
 ### RTCDataChannel
 
