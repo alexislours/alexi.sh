@@ -10,7 +10,7 @@ The iOS 16 beta 3 introduced a new privacy feature: Lockdown Mode. The idea is t
 
 Apple also gives a rough list of the features disabled in Lockdown, including one which caught my eye:
 
-> Web browsing: Certain complex web technologies, like just-in-time (JIT) JavaScript compilation, are disabled unless the user excludes a trusted site from [Lockdown Mode](https://www.apple.com/newsroom/2022/07/apple-expands-commitment-to-protect-users-from-mercenary-spyware/).[^1]
+> Web browsing: Certain complex web technologies, like just-in-time (JIT) JavaScript compilation, are disabled unless the user excludes a trusted site from Lockdown Mode.[^1^](https://www.apple.com/newsroom/2022/07/apple-expands-commitment-to-protect-users-from-mercenary-spyware/)
 
 The first thing I thought was that disabling JavaScript JIT compilation in JavaScriptCore would cause a major drop in performance, given the amount of JavaScript used in webpages. I wanted to test how big this impact would be.
 
@@ -39,7 +39,7 @@ Let's go over each of the feature to make sense of why they were disabled.
 
 ### WebAssembly
 
-WASM, while incredibly powerful, can be used to very quickly and effectively fingerprint clients through canvas rendering discrepancies[^2] or local ports scanning[^3] among other options and make them harder for ad blockers to detect. This can be a major pain point for Blazor sites and other frameworks relying on Web Assembly since they simply won't work without a JavaScript fallback.
+WASM, while incredibly powerful, can be used to very quickly and effectively fingerprint clients through canvas rendering discrepancies[^2^](https://github.com/drbh/wasm-fingerprint) or local ports scanning[^3^](https://infosecwriteups.com/identify-website-users-by-client-port-scanning-using-webassembly-and-go-e9798b4aa05c) among other options and make them harder for ad blockers to detect. This can be a major pain point for Blazor sites and other frameworks relying on Web Assembly since they simply won't work without a JavaScript fallback.
 
 ### MP3 Playback
 
@@ -47,23 +47,23 @@ MP3 support is a bit of an outlier for me here. Most browsers support MP3 playba
 
 ### MathML
 
-MathML rendering can be slightly different on a per device basis, which might allow an attacker to track a device through the `DOMRect` object of a MathML render[^4].
+MathML rendering can be slightly different on a per device basis, which might allow an attacker to track a device through the `DOMRect` object of a MathML render[^4^](https://privacycheck.sec.lrz.de/active/fp_ml/fp_ml.html).
 
 ### Gamepad API
 
-Without fingerprinting mitigation, the Gamepad API can be used to track users through the `id` and `buttons` property once users have interacted with the page[^5]. This will break most in browser games and game streaming platforms that use a controller to play games.
+Without fingerprinting mitigation, the Gamepad API can be used to track users through the `id` and `buttons` property once users have interacted with the page[^5^](https://www.xda-developers.com/chrome-gamepad-api-changes/). This will break most in browser games and game streaming platforms that use a controller to play games.
 
 ### Web Audio API
 
-The Web Audio API can be used to fingerprint Safari users through the `webkitOfflineAudioContext` interface and signal variation[^6].
+The Web Audio API can be used to fingerprint Safari users through the `webkitOfflineAudioContext` interface and signal variation[^6^](https://fingerprint.com/blog/audio-fingerprinting/).
 
 ### WebGL
 
-WebGL fingerprinting is one of the oldest way to track users through "unconventional" methods with rendering discrepancies between individual devices, even running the same hardware. The `WebGLRenderingContext` can also be used to detect user hardware and support WebGL versions[^7].
+WebGL fingerprinting is one of the oldest way to track users through "unconventional" methods with rendering discrepancies between individual devices, even running the same hardware. The `WebGLRenderingContext` can also be used to detect user hardware and support WebGL versions[^7^](https://privacycheck.sec.lrz.de/active/fp_wg/fp_webgl.html).
 
 ### JPEG 2000
 
-JPEG 2000 support is nowadays a sure way to identify a device as running Safari since it is the only browser supporting it[^8].
+JPEG 2000 support is nowadays a sure way to identify a device as running Safari since it is the only browser supporting it[^8^](https://caniuse.com/jpeg2000).
 
 ### Speech Recognition API
 
@@ -76,7 +76,7 @@ The `MediaDeviceInfo` can be used to track user across sessions on a single orig
 
 ### RTCDataChannel
 
-The WebRTC API can be used to leak the public and local IP of a device, even under a VPN, when communicating with a STUN server[^9].
+The WebRTC API can be used to leak the public and local IP of a device, even under a VPN, when communicating with a STUN server[^9^](https://developer.mozilla.org/en-US/docs/Web/API/WebRTC_API/Connectivity).
 
 ### PDF Viewer
 
@@ -131,14 +131,3 @@ In this case, the performance loss only amounts to 20%, which would be unnoticea
 While the privacy aspect are minimal at best at the moment, since the disabled API could indicate that user is using Lockdown mode, this should become slightly better once Lockdown rolls out for all users. 
 
 Nonetheless, Apple targeted some key APIs that can be abused as a mean to get a very precise fingerprint of a user and also reduced the total surface of attack for other means of exploitation. 
-
-
-[^1]: https://www.apple.com/newsroom/2022/07/apple-expands-commitment-to-protect-users-from-mercenary-spyware/
-[^2]: https://github.com/drbh/wasm-fingerprint
-[^3]: https://infosecwriteups.com/identify-website-users-by-client-port-scanning-using-webassembly-and-go-e9798b4aa05c
-[^4]: https://privacycheck.sec.lrz.de/active/fp_ml/fp_ml.html
-[^5]: https://www.xda-developers.com/chrome-gamepad-api-changes/
-[^6]: https://fingerprint.com/blog/audio-fingerprinting/
-[^7]: https://privacycheck.sec.lrz.de/active/fp_wg/fp_webgl.html
-[^8]: https://caniuse.com/jpeg2000
-[^9]: https://developer.mozilla.org/en-US/docs/Web/API/WebRTC_API/Connectivity

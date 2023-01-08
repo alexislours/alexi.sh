@@ -3,13 +3,14 @@ import rehypeExternalLinks from 'rehype-external-links';
 import rehypeSlug from 'rehype-slug';
 import rehypeAutolinkHeadings from 'rehype-autolink-headings';
 import rehypeImgSize from 'rehype-img-size'
+import supersub from 'remark-supersub';
 
 export default {
 	extensions: ['.md'],
 	smartypants: {
 		dashes: 'oldschool'
 	},
-	remarkPlugins: [relativeImages],
+	remarkPlugins: [relativeImages, supersub],
 	rehypePlugins: [
 		[rehypeExternalLinks, { target: '_blank', rel: ['noopener', 'noreferrer'] }],
 		rehypeSlug,
