@@ -12,7 +12,6 @@ export async function load({ params }: any) {
 	}
 
 	return {
-		// eslint-disable-next-line no-unused-vars
 		post: post,
 	};
 }

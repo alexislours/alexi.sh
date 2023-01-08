@@ -1,7 +1,7 @@
-const readTime = (text: string) => {
-    const wordsPerMinute = 200;
-    const noOfWords = text.split(/\s/g).length;
-    const minutes = noOfWords / wordsPerMinute;
+const WPM = 200;
+
+const readTime = (wordCount: number) => {
+    const minutes = wordCount / WPM;
     const readTime = Math.ceil(minutes);
     return readTime;
 };

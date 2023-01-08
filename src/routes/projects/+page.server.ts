@@ -11,7 +11,6 @@ export async function load() {
 	}
 
 	return {
-		// eslint-disable-next-line no-unused-vars
 		projects: projects
 	};
 }

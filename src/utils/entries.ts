@@ -1,5 +1,5 @@
-import { browser } from '$app/environment';
 import { slug } from 'github-slugger';
+import * as jsdom from 'jsdom';
 import type { TagItem } from '$lib/types/tag';
 
 type EntryType = 'posts' | 'projects';
@@ -23,11 +23,13 @@ const getEntriesByType = (entryType: EntryType) => {
 	}
 };
 
-const getMetadata = (entryType: EntryType, filepath: string, entry: any) => {
+const getMetadata = (filepath: string, entry: any) => {
 	return {
 		...entry.metadata,
 
 		content: entry.default.render().html,
+
+		wordCount: jsdom.JSDOM.fragment(entry.default.render().html).textContent?.split(/\s+/).length || 0,
 
 		slug: filepath
 			.replace(/(\/index)?\.md/, '')
@@ -44,7 +46,7 @@ export const getEntries = (entryType: EntryType) => {
 
 	return (
 		entries
-			.map(([filepath, entry]) => getMetadata(entryType, filepath, entry))
+			.map(([filepath, entry]) => getMetadata(filepath, entry))
 			.filter((entry) => !entry.draft)
 			.sort((a, b) => (a.date < b.date ? 1 : -1))
 			.map((entry, index, allEntries) => ({

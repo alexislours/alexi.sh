@@ -7,6 +7,7 @@
 
     import type { Post } from "$lib/types/post";
     import type { TagItem } from "$lib/types/tag";
+    import { readTime } from "$utils/read-time";
 
     export let title = "";
     export let subtitle = "";
@@ -74,7 +75,7 @@
                                                 month: "long",
                                                 day: "numeric",
                                             }
-                                        )}
+                                        )} ({readTime(post.wordCount)} mins)
                                     </p>
                                 </div>
                                 <div

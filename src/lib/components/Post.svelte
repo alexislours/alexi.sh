@@ -32,7 +32,7 @@
                     <dd
                         class="text-sm font-medium leading-6 text-gray-500 dark:text-gray-400"
                     >
-                        {readTime(post.content)} min read
+                        {readTime(post.wordCount)} min read
                     </dd>
                 </div>
             </dl>

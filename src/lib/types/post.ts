@@ -5,6 +5,7 @@ export type Post = {
     tags: string[];
     image: string;
     content: string;
+    wordCount: number;
     slug: string;
     next?: Post;
     prev?: Post;
