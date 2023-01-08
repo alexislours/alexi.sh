@@ -13,7 +13,7 @@ Before ES6, `undefined` wasn't a reserved keyword in JavaScript and thus could b
 
 ```js
 undefined = "foo";
-var a;
+let a;
 console.log(a == undefined); // false
 ```
 
