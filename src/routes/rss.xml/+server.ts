@@ -19,7 +19,7 @@ export async function GET() {
 const xml =
   (posts: Post[]) => `<rss xmlns:dc="https://purl.org/dc/elements/1.1/" xmlns:content="https://purl.org/rss/1.0/modules/content/" xmlns:atom="https://www.w3.org/2005/Atom" version="2.0">
   <channel>
-    <title>Alexis LOURS - Blog</title>
+    <title>Alexis LOURS</title>
     <link>${config.domain}</link>
     <description>My blog things I feel like writing about.</description>
     ${posts
