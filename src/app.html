@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8" />
+	<link rel="icon" href="/favicon.png" />
+    <link rel="icon" sizes="192x192" href="/android-chrome-192x192.png">
+	<link rel="icon" sizes="512x512" href="/android-chrome-512x512.png">
+	<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+	<meta name="viewport" content="width=device-width" />
+	<link rel="stylesheet" href="/css/one-dark.css" />
+	%sveltekit.head%
+</head>
+
+<body class="bg-white text-zinc-900 dark:bg-zinc-900 dark:text-white transition-all duration-200" data-sveltekit-preload-data="hover">
+	<div style="display: contents">%sveltekit.body%</div>
+</body>
+
+<script>
+	if (localStorage.theme === 'dark') document.documentElement.classList.add('dark');
+</script>
+</html>

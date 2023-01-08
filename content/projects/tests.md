@@ -1,0 +1,10 @@
+---
+title: Tests
+start: 2020-07-01
+end: 2022-01-01
+draft: false
+at: Etam
+subtitle: "Puppeteer project controlled through a C# WPF GUI."
+description: "Tests internal hybrid apps through Puppeteer. Settings controlled through the GUI and custom test result reporting."
+image: /img/projects/tests.jpg
+---

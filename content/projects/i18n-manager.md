@@ -1,0 +1,9 @@
+---
+title: i18n-manager
+start: 2022-08-01
+draft: false
+at: Etam
+subtitle: "Rust CLI to manage i18n labels in Angular projects."
+description: "Allows to find unused labels and duplicates, and generate or extract labels from and to JSON, CSV and TSV."
+image: /img/projects/i18nmanager.jpg
+---
