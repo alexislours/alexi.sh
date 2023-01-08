@@ -18,7 +18,7 @@ With this information, it is now possible to connect to the tablet if it is conn
 ![SSH-ing into the tablet](/img/blog/2022/07/extending-the-remarkable/ssh-terminal.jpg)
 
 Using neofetch, we can see that the reMarkable is using a Linux based OS called Codex Linux with a Freescale i.MX6 SoloLite CPU.
-![Neofetch](/img/blog/2022/07/extending-the-remarkable/neofetch.jpg)
+![neofetch](/img/blog/2022/07/extending-the-remarkable/neofetch.jpg)
 
 ## Toltec
 Toltec allows you to access packages from the [Entware](https://entware.net/about.html) and Toltec repository through the `opkg` package manager. The installation instructions can be found on [their website](https://toltec-dev.org/).

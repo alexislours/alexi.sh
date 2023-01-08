@@ -14,7 +14,7 @@ Apple also gives a rough list of the features disabled in Lockdown, including on
 
 The first thing I thought was that disabling JavaScript JIT compilation in JavaScriptCore would cause a major drop in performance, given the amount of JavaScript used in webpages. I wanted to test how big this impact would be.
 
-The second was figuring out what's included in “Certain complex web technologies," since Apple did not provide an explanation.
+The second was figuring out what's included in "Certain complex web technologies," since Apple did not provide an explanation.
 
 ## Disabled features
 
@@ -47,7 +47,7 @@ MP3 support is a bit of an outlier for me here. Most browsers support MP3 playba
 
 ### MathML
 
-MathML rendering can be slightly different on a per device basis, which might allow an attacker to track a device through the `DOMRect` object of a MathML render[^4^](https://privacycheck.sec.lrz.de/active/fp_ml/fp_ml.html).
+MathML rendering can be slightly different on a per-device basis, which might allow an attacker to track a device through the `DOMRect` object of a MathML render[^4^](https://privacycheck.sec.lrz.de/active/fp_ml/fp_ml.html).
 
 ### Gamepad API
 
