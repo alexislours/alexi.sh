@@ -1,7 +1,6 @@
 ---
 title: GitHub RSS
 start: 2022-08-03
-draft: false
 subtitle: "Generate RSS feeds from GitHub trending."
 description: "Automatically create RSS feeds from GitHub trending repositories for all languages."
 image: /img/projects/githubrss.jpg
