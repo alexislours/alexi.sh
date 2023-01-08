@@ -6,4 +6,6 @@ export type Post = {
     image: string;
     content: string;
     slug: string;
+    next?: Post;
+    prev?: Post;
 };

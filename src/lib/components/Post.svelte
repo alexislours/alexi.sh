@@ -18,16 +18,20 @@
             <dl class="space-y-10">
                 <div>
                     <dt class="sr-only">Published on</dt>
-                    <dd class="text-base font-medium leading-6 text-gray-500 dark:text-gray-400">
+                    <dd
+                        class="text-base font-medium leading-6 text-gray-500 dark:text-gray-400"
+                    >
                         <time dateTime={post.date}>
-                            {new Date(post.date).toLocaleDateString('en-us', {
-                                year: 'numeric',
-                                month: 'long',
-                                day: 'numeric'
+                            {new Date(post.date).toLocaleDateString("en-us", {
+                                year: "numeric",
+                                month: "long",
+                                day: "numeric",
                             })}
                         </time>
                     </dd>
-                    <dd class="text-sm font-medium leading-6 text-gray-500 dark:text-gray-400">
+                    <dd
+                        class="text-sm font-medium leading-6 text-gray-500 dark:text-gray-400"
+                    >
                         {readTime(post.content)} min read
                     </dd>
                 </div>
@@ -41,18 +45,70 @@
     </article>
     <footer>
         {#if post.tags}
-        <div class="py-4 xl:py-8">
-            <h2 class="text-xs uppercase tracking-wide text-gray-500 dark:text-gray-400">
-                Tags
-            </h2>
-            <div class="flex flex-wrap">
-                {#each post.tags as tag}
-                    <Tag text={tag} />
-                {/each}
+            <div class="py-4 xl:py-8">
+                <h2
+                    class="text-xs uppercase tracking-wide text-gray-500 dark:text-gray-400"
+                >
+                    Tags
+                </h2>
+                <div class="flex flex-wrap">
+                    {#each post.tags as tag}
+                        <Tag text={tag} />
+                    {/each}
+                </div>
             </div>
-        </div>
-    {/if}
+        {/if}
     </footer>
+    <div class="flex flex-col md:flex-row w-full mt-5 mb-5 gap-10 md:gap-2 items-center md:justify-between">
+        {#if post.next}
+            <a
+                href={`/blog/${post.next.slug}`}
+                class="text-gray-500 dark:text-gray-400 self-start flex items-center text-sm hover:text-gray-900 dark:hover:text-gray-100"
+            >
+                <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke-width="1.5"
+                    stroke="currentColor"
+                    class="w-6 h-6"
+                >
+                    <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        d="M15.75 19.5L8.25 12l7.5-7.5"
+                    />
+                </svg>
+
+                <span class="ml-2">{post.next.title}</span>
+            </a>
+        {:else}
+            <div />
+        {/if}
+        {#if post.prev}
+            <a
+                href={`/blog/${post.prev.slug}`}
+                class="text-gray-500 flex items-center text-sm self-end dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100"
+            >
+                <span class="mr-2">{post.prev.title}</span><svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke-width="1.5"
+                    stroke="currentColor"
+                    class="w-6 h-6"
+                >
+                    <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        d="M8.25 4.5l7.5 7.5-7.5 7.5"
+                    />
+                </svg>
+            </a>
+        {:else}
+            <div />
+        {/if}
+    </div>
 </div>
 
 <style>
