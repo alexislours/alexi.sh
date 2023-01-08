@@ -6,6 +6,7 @@ export type Post = {
     image: string;
     content: string;
     wordCount: number;
+    draft?: boolean;
     slug: string;
     next?: Post;
     prev?: Post;
