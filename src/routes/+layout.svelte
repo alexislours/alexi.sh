@@ -25,7 +25,19 @@
             clearTimeout(timeout);
             loading = false;
 
-            const links = document.querySelectorAll("a")
+            const links = Array.from(document.querySelectorAll("a")).filter((link) => {
+                if (link.target === "_blank") {
+                    return false;
+                }
+
+                const regexp = [
+                    /^https:\/\/alexi\.sh(\/(?!.*\.[^\/]*$).*)?$/, // URLs hosted on alexi.sh
+                    /^(?!.*\.[^\/]*$).*$/,                         // Relative URLs
+                    /^\/(?!.*\.[^\/]*$).*$/                        // Absolute URLs
+                ]
+                
+                return regexp.some((r) => r.test(link.href));
+            });
             
             const observer = new IntersectionObserver(
                 (entries) => {
@@ -53,8 +65,8 @@
 </script>
 
 {#if loading}
-    <div class="fixed top-0 left-0 h-full bg-black bg-opacity-0 z-10">
-        <div class="flex h-full items-center justify-center">
+    <div class="fixed top-0 left-0 h-screen w-screen bg-black bg-opacity-0 z-10">
+        <div class="flex h-full w-full items-center justify-center">
             <svg
                 aria-hidden="true"
                 class="w-8 h-8 mr-2 text-gray-200 animate-spin dark:text-gray-600 fill-blue-600"
