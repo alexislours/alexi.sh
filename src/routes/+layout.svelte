@@ -4,8 +4,9 @@
     import Header from "$lib/components/layout/Header.svelte";
     import Footer from "$lib/components/layout/Footer.svelte";
     import Transition from "$lib/components/layout/Transition.svelte";
-    import { beforeNavigate } from "$app/navigation";
+    import { beforeNavigate, preloadData, preloadCode } from "$app/navigation";
     import { page } from "$app/stores";
+    import { onMount } from "svelte";
 
     let loading = false;
 
@@ -19,9 +20,33 @@
         }
     });
 
-    page.subscribe(() => {
-        clearTimeout(timeout);
-        loading = false;
+    onMount(() => {
+        page.subscribe(() => {
+            clearTimeout(timeout);
+            loading = false;
+
+            const links = document.querySelectorAll("a")
+            
+            const observer = new IntersectionObserver(
+                (entries) => {
+                    entries.forEach((entry) => {
+                        if (entry.isIntersecting) {
+                            const link = entry.target as HTMLAnchorElement;
+                            preloadData(link.href);
+                            preloadCode(link.href);
+                        }
+                    });
+                },
+                {
+                    rootMargin: "0px 0px 100px 0px",
+                }
+            );
+
+            links.forEach((link) => {
+                observer.observe(link);
+            });
+            
+        });
     });
 
     export let data: { pathname: string };
