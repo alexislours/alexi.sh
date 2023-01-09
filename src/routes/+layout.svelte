@@ -53,7 +53,7 @@
 </script>
 
 {#if loading}
-    <div class="fixed top-0 left-0 w-full h-full bg-black bg-opacity-0 z-10">
+    <div class="fixed top-0 left-0 h-full bg-black bg-opacity-0 z-10">
         <div class="flex h-full items-center justify-center">
             <svg
                 aria-hidden="true"

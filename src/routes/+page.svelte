@@ -4,7 +4,7 @@
 
 <Head />
 
-<div class="mt-32 w-full">
+<div class="mt-32">
     <section>
         <h1 class="text-6xl font-bold text-center">Alexis Lours</h1>
         <p class="text-center mt-5">Full-Stack developer from France.</p>
