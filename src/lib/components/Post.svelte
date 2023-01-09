@@ -1,6 +1,7 @@
 <script lang="ts">
     import Tag from "$lib/components/Tag.svelte";
     import type { Post } from "$lib/types/post";
+    import { timeSince } from "$utils/date";
     import { readTime } from "$utils/read-time";
     export let post: Post;
 </script>
@@ -29,6 +30,19 @@
                             })}
                         </time>
                     </dd>
+                    {#if post.updated}
+                        <dd
+                            class="text-sm font-medium leading-6 text-gray-500 dark:text-gray-400"
+                        >
+                            <time dateTime={post.updated}>
+                                Updated on {new Date(post.updated).toLocaleDateString("en-us", {
+                                    year: "numeric",
+                                    month: "long",
+                                    day: "numeric",
+                                })} ({timeSince(post.updated)} ago)
+                            </time>
+                        </dd>
+                    {/if}
                     <dd
                         class="text-sm font-medium leading-6 text-gray-500 dark:text-gray-400"
                     >
