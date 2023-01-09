@@ -1,5 +1,6 @@
 <script lang="ts">
     import "../app.css";
+    import "../one-dark.css"
     import Header from "$lib/components/layout/Header.svelte";
     import Footer from "$lib/components/layout/Footer.svelte";
     import Transition from "$lib/components/layout/Transition.svelte";

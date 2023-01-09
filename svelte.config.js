@@ -15,7 +15,8 @@ const config = {
 		adapter: adapter({
 			edge: false,
 			split: true
-		})
+		}),
+		inlineStyleThreshold: 30000,
 	},
 
 	preprocess: [mdsvex(mdsvexConfig), vitePreprocess()]
