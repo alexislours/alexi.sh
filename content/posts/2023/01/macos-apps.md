@@ -134,3 +134,8 @@ alias lsat='exa -aT --color=always --group-directories-first'
 [Transnomino](https://transnomino.com/) is a tool that allows you to rename files in bulk. It has a lot of different features like appending to file name, renaming files based on regular expressions, and more.
 
 ![Transnomino](/img/blog/2023/01/transnomino.png)
+
+
+### ForkLift
+
+[ForkLift](https://binarynights.com/) is a file manager for macOS. I use it for its integration with remote servers as an alternative to FileZilla.
