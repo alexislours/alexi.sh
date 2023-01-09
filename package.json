@@ -1,6 +1,9 @@
 {
 	"name": "alexi.sh",
-	"version": "0.0.1",
+	"description": "My personal website",
+	"repository": "https://gitlab.com/alexislours/alexi.sh",
+	"author": "Alexis LOURS <alexislours@protonmail.com>",
+	"version": "1.0.0",
 	"private": true,
 	"license": "GPL-3.0-or-later",
 	"scripts": {
