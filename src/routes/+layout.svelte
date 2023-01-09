@@ -8,12 +8,17 @@
     import { page } from "$app/stores";
 
     let loading = false;
+
+    let timeout = -1;
     
     beforeNavigate(async () => {
-        loading = true;
+        timeout = window.setTimeout(() => {
+            loading = true;
+        }, 500);
     });
 
     page.subscribe(() => {
+        clearTimeout(timeout);
         loading = false;
     });
 
