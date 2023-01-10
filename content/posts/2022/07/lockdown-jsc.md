@@ -67,11 +67,12 @@ JPEG 2000 support is nowadays a sure way to identify a device as running Safari 
 
 ### Speech Recognition API
 
-While the [Web Speech API](https://developer.mozilla.org/en-US/docs/Web/API/Web_Speech_API/Using_the_Web_Speech_API) runs on device on macOS and iOS, it can be used to record an unsuspecting user. 
+While the [Web Speech API](https://developer.mozilla.org/en-US/docs/Web/API/Web_Speech_API/Using_the_Web_Speech_API) runs on device on macOS and iOS, it can be used to record an unsuspecting user.
 
 This isn't related to the iOS dictation or Siri, both of which will still work just fine and aren't accessible to websites. A demo of the Web Speech API by Google can be found [at this link](https://www.google.com/intl/en/chrome/demos/speech.html).
 
 ### MediaDevices.getUserMedia()
+
 The `MediaDeviceInfo` can be used to track user across sessions on a single origin through its `deviceId` property of a webcam, speaker, or camera. Access to said device could also be a privacy risk. This means that most sites requiring access to the microphone or cameras of the device won't work.
 
 ### RTCDataChannel
@@ -86,7 +87,7 @@ The WebKit PDF viewer is disabled, clicking on a document will instead trigger a
 
 SVG fonts are disabled, this is probably a similar situation to [JPEG 2000](#jpeg-2000) where only Safari supports them.
 
-These changes are applied to all iOS and iPadOS browsers since they have to use WebKit under the hood. 
+These changes are applied to all iOS and iPadOS browsers since they have to use WebKit under the hood.
 
 Using Chrome, Firefox, or Brave will still disable these features.
 
@@ -128,6 +129,6 @@ In this case, the performance loss only amounts to 20%, which would be unnoticea
 
 ## Conclusion
 
-While the privacy aspect are minimal at best at the moment, since the disabled API could indicate that user is using Lockdown mode, this should become slightly better once Lockdown rolls out for all users. 
+While the privacy aspect are minimal at best at the moment, since the disabled API could indicate that user is using Lockdown mode, this should become slightly better once Lockdown rolls out for all users.
 
-Nonetheless, Apple targeted some key APIs that can be abused as a mean to get a very precise fingerprint of a user and also reduced the total surface of attack for other means of exploitation. 
+Nonetheless, Apple targeted some key APIs that can be abused as a mean to get a very precise fingerprint of a user and also reduced the total surface of attack for other means of exploitation.

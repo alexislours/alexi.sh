@@ -15,7 +15,7 @@ The list is in no particular order and some of these apps are not free.
 
 ### Homebrew
 
-[Homebrew](https://brew.sh/) is a package manager for macOS. It allows installing and updating packages from the command line. 
+[Homebrew](https://brew.sh/) is a package manager for macOS. It allows installing and updating packages from the command line.
 
 I use it to manage all the other CLI tools I use, desktop apps and also fonts.
 
@@ -134,7 +134,6 @@ alias lsat='exa -aT --color=always --group-directories-first'
 [Transnomino](https://transnomino.com/) is a tool that allows you to rename files in bulk. It has a lot of different features like appending to file name, renaming files based on regular expressions, and more.
 
 ![Transnomino](/img/blog/2023/01/transnomino.png)
-
 
 ### ForkLift
 

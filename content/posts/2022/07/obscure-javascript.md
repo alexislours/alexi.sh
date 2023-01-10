@@ -5,9 +5,11 @@ description: "Some lesser known features of JavaScript."
 tags: ["JavaScript"]
 image: "/img/blog/2022/07/obscure-javascript/og.jpg"
 ---
+
 JavaScript has some features that surprisingly few people know about. In this post, I'll talk about some of those features.
 
 ## `void` operator
+
 The `void` operator is one with a funny history.
 Before ES6, `undefined` wasn't a reserved keyword in JavaScript and thus could be overwritten.
 
@@ -17,16 +19,15 @@ let a;
 console.log(a == undefined); // false
 ```
 
-The void operator ***always*** returns `undefined` after evaluating the expression, no matter what the resulting value of the expression is.
+The void operator **_always_** returns `undefined` after evaluating the expression, no matter what the resulting value of the expression is.
 
 ```js
 void 0; // undefined
-void(0); // undefined
+void 0; // undefined
 void 1 + 1; // undefined
 ```
 
 The `void` operator can also be used with [immediately-invoked function expression](https://developer.mozilla.org/en-US/docs/Glossary/IIFE) over parenthesis wrapping, but this should be avoided for the sake of readability.
-
 
 ```js
 // with parenthesis wrapping
@@ -52,24 +53,25 @@ const doSomething = () => void someOtherFunction();
 ```
 
 ## Labeled loops
-You can label loops in JavaScript using any non-reserved keywords. 
+
+You can label loops in JavaScript using any non-reserved keywords.
 These labels can then be used to break out of nested loops or use the `continue` keyword.
 
 ```js
 let i, j;
 
-top:
-for (i = 0; i < 3; i++) {
-    for (j = 0; j < 3; j++) {
-        console.log('i = ' + i + ', j = ' + j);
-        if (i === 1 && j === 1) {
-            break top; // will break out of top when i = 1 and j = 1
-        }
-    }
+top: for (i = 0; i < 3; i++) {
+	for (j = 0; j < 3; j++) {
+		console.log("i = " + i + ", j = " + j);
+		if (i === 1 && j === 1) {
+			break top; // will break out of top when i = 1 and j = 1
+		}
+	}
 }
 ```
 
 ## Comma operator
+
 The comma operator evaluate each operand from left to right and returns the last one.
 This can be useful to make shorter lambda functions or modify and assign variables in a single statement.
 
@@ -86,15 +88,17 @@ Every JavaScript functions have an `arguments` array-like object that contains t
 
 ```js
 function toCSV() {
-    return Array.from(arguments).join(',');
+	return Array.from(arguments).join(",");
 }
 toCSV(1, 2, 3); // "1,2,3"
 ```
+
 Using the spread operator:
+
 ```js
 const toCSV = (...args) => {
-    return Array.from(args).join(',');
-}
+	return Array.from(args).join(",");
+};
 toCSV(1, 2, 3); // "1,2,3"
 ```
 
@@ -113,10 +117,10 @@ JavaScript functions can have properties. This can be used to store data that is
 
 ```js
 function foo() {
-    foo.executionCount++;
-    if (foo.executionCount === 3) {
-        console.log("executed 3 times");
-    }
+	foo.executionCount++;
+	if (foo.executionCount === 3) {
+		console.log("executed 3 times");
+	}
 }
 foo.executionCount = 0;
 ```

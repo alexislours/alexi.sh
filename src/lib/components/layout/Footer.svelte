@@ -2,7 +2,7 @@
 	import { config } from "$lib/config";
 	import Gitlab from "$lib/icons/Gitlab.svelte";
 	import Mail from "$lib/icons/Mail.svelte";
-    import Rss from "$lib/icons/Rss.svelte";
+	import Rss from "$lib/icons/Rss.svelte";
 	let startYear = 2022;
 	let year = new Date().getFullYear();
 </script>
@@ -26,9 +26,7 @@
 				<Rss />
 			</a>
 		</div>
-		<div
-			class="mb-4 flex space-x-2 text-sm text-gray-500 dark:text-gray-100"
-		>
+		<div class="mb-4 flex space-x-2 text-sm text-gray-500 dark:text-gray-100">
 			© {startYear}-{year} Alexis LOURS
 		</div>
 	</div>

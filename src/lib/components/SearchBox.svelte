@@ -1,12 +1,12 @@
 <script lang="ts">
-	import { page } from '$app/stores';
-	import { goto } from '$app/navigation';
-	import { onMount } from 'svelte';
-	let search: string | null = '';
+	import { page } from "$app/stores";
+	import { goto } from "$app/navigation";
+	import { onMount } from "svelte";
+	let search: string | null = "";
 	onMount(() => {
-		search = $page.url.searchParams.get('query');
+		search = $page.url.searchParams.get("query");
 		if (search) {
-			document.getElementById('search')?.focus();
+			document.getElementById("search")?.focus();
 		}
 	});
 	async function handleSubmit() {

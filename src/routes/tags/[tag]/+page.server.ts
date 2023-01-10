@@ -1,19 +1,19 @@
-import { error } from '@sveltejs/kit';
-import { slug } from 'github-slugger';
-import { getEntries } from '$utils/entries.js';
+import { error } from "@sveltejs/kit";
+import { slug } from "github-slugger";
+import { getEntries } from "$utils/entries.js";
 
 function slugsArray(tags: string[]) {
 	return tags?.map((t) => slug(t)) || [];
 }
 
 /** @type {import('./$types').PageServerLoad} */
-export async function load({ params }: any) {
+export async function load({ params }: { params: { tag: string } }) {
 	const { tag } = params;
-	const posts = getEntries('posts');
+	const posts = getEntries("posts");
 	const filteredPosts = posts.filter((p) => slugsArray(p.tags).includes(tag));
 
 	if (!filteredPosts) {
-		throw error(404, 'No post found');
+		throw error(404, "No post found");
 	}
 
 	return {

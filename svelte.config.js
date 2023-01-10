@@ -1,11 +1,11 @@
-import adapter from '@sveltejs/adapter-auto';
-import { vitePreprocess } from '@sveltejs/kit/vite';
-import { mdsvex } from 'mdsvex';
-import mdsvexConfig from './mdsvex.config.js';
+import adapter from "@sveltejs/adapter-auto";
+import { vitePreprocess } from "@sveltejs/kit/vite";
+import { mdsvex } from "mdsvex";
+import mdsvexConfig from "./mdsvex.config.js";
 
 /** @type {import('@sveltejs/kit').Config} */
 const config = {
-	extensions: ['.svelte', ...mdsvexConfig.extensions],
+	extensions: [".svelte", ...mdsvexConfig.extensions],
 
 	kit: {
 		alias: {
@@ -16,7 +16,7 @@ const config = {
 			edge: false,
 			split: true
 		}),
-		inlineStyleThreshold: 50000,
+		inlineStyleThreshold: 50000
 	},
 
 	preprocess: [mdsvex(mdsvexConfig), vitePreprocess()]

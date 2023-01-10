@@ -11,6 +11,7 @@ A few weeks ago, I managed to get my hands on a reMarkable tablet.
 After using it for a day of two, I found the software to be too limiting to make full use of what such a tablet could offer. This prompted me to start looking into what was available in terms of custom software for the device, and to my surprise, there is quite a lot of it available.
 
 ## Connecting via SSH
+
 To follow the GPLv3 license in the software used by the reMarkable, SSH access is granted to you. The logins can be found at the bottom of the page located under `Settings > Help > Copyright and licenses`.
 ![Login information](/img/blog/2022/07/extending-the-remarkable/gpl-compliance.jpg)
 
@@ -21,6 +22,7 @@ Using neofetch, we can see that the reMarkable is using a Linux based OS called 
 ![neofetch](/img/blog/2022/07/extending-the-remarkable/neofetch.jpg)
 
 ## Toltec
+
 Toltec allows you to access packages from the [Entware](https://entware.net/about.html) and Toltec repository through the `opkg` package manager. The installation instructions can be found on [their website](https://toltec-dev.org/).
 
 We can install `nao`, a graphical front-end for `opkg` with the following command:
@@ -28,15 +30,19 @@ We can install `nao`, a graphical front-end for `opkg` with the following comman
 ```bash
 opkg install nao
 ```
+
 We can also install `remux` to have a quick task manager.
+
 ```bash
 opkg install remux
 ```
+
 Pressing the middle button on the tablet will now open the task manager and allow you to open installed applications.
 
-Starting `nao`, we are greeted with 3 different repositories: 
+Starting `nao`, we are greeted with 3 different repositories:
 
 ![Repositories](/img/blog/2022/07/extending-the-remarkable/repositories.jpg)
+
 - entware, which contains generic Linux packages.
 - toltec-rm1, which contains packages specifically for the reMarkable 1.
 - toltec-rmall, which contains packages for all reMarkable devices.

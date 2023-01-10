@@ -1,12 +1,12 @@
-<script>
-	import { navLinks } from '$lib/config';
+<script lang="ts">
+	import { navLinks } from "$lib/config";
 	let isOpen = false;
 	function toggleDarkMode() {
 		if (isOpen) {
-			document.documentElement.style.overflow = 'auto';
+			document.documentElement.style.overflow = "auto";
 			isOpen = false;
 		} else {
-			document.documentElement.style.overflow = 'hidden';
+			document.documentElement.style.overflow = "hidden";
 			isOpen = true;
 		}
 	}
@@ -59,15 +59,15 @@
 			</button>
 		</div>
 		<nav class="fixed mt-8 h-full">
-            <div class="px-12 py-4">
-                <a
-                    href="/"
-                    class="text-2xl font-bold tracking-widest text-gray-900 dark:text-gray-100"
-                    on:click={toggleDarkMode}
-                >
-                    Home
-                </a>
-            </div>
+			<div class="px-12 py-4">
+				<a
+					href="/"
+					class="text-2xl font-bold tracking-widest text-gray-900 dark:text-gray-100"
+					on:click={toggleDarkMode}
+				>
+					Home
+				</a>
+			</div>
 			{#each navLinks as link}
 				<div class="px-12 py-4">
 					<a

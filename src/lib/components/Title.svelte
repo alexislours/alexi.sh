@@ -1,8 +1,8 @@
 <script>
-	export let title = 'Title';
-	export let subtitle = '';
+	export let title = "Title";
+	export let subtitle = "";
 	export let h2 = false;
-	let selected = h2 ? 'h2' : 'h1';
+	let selected = h2 ? "h2" : "h1";
 </script>
 
 {#if title}

@@ -1,6 +1,6 @@
 <script lang="ts">
-	import { fade } from 'svelte/transition';
-	export let pathname = '';
+	import { fade } from "svelte/transition";
+	export let pathname = "";
 </script>
 
 {#key pathname}

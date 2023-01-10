@@ -1,10 +1,10 @@
-import { browser } from '$app/environment';
+import { browser } from "$app/environment";
 import { config } from "$lib/config";
 
 const isLocalStorageAvailable = () => {
 	try {
-		localStorage.setItem('test', 'test');
-		localStorage.removeItem('test');
+		localStorage.setItem("test", "test");
+		localStorage.removeItem("test");
 		return true;
 	} catch {
 		return false;
@@ -14,15 +14,15 @@ const isLocalStorageAvailable = () => {
 const isDarkMode = () => {
 	let darkMode = false;
 	if (browser) {
-		if (isLocalStorageAvailable() && 'theme' in localStorage) {
-			darkMode = localStorage.theme === 'dark';
-		} else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+		if (isLocalStorageAvailable() && "theme" in localStorage) {
+			darkMode = localStorage.theme === "dark";
+		} else if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
 			darkMode = true;
 		} else {
-			darkMode = config.theme === 'dark';
+			darkMode = config.theme === "dark";
 		}
 	} else if (isLocalStorageAvailable()) {
-		darkMode = localStorage.theme === 'dark';
+		darkMode = localStorage.theme === "dark";
 	}
 
 	return darkMode;
@@ -30,11 +30,11 @@ const isDarkMode = () => {
 
 const setDarkMode = (darkMode: boolean, save = true) => {
 	if (darkMode) {
-		document.documentElement.classList.add('dark');
-		if (save) localStorage.theme = 'dark';
+		document.documentElement.classList.add("dark");
+		if (save) localStorage.theme = "dark";
 	} else {
-		document.documentElement.classList.remove('dark');
-		if (save) localStorage.theme = 'light';
+		document.documentElement.classList.remove("dark");
+		if (save) localStorage.theme = "light";
 	}
 	return darkMode;
 };
