@@ -37,7 +37,7 @@
         <div class="p-6">
             <h2 class="mb-3 text-2xl font-bold leading-8 tracking-tight">
                 {#if card.href}
-                    <a href={card.href} aria-label={`Link to ${card.title}`}>
+                    <a href={card.href} target="_blank" rel="noreferrer" aria-label={`Link to ${card.title}`}>
                         {card.title}
                         {#if card.at} @ {card.at} {/if}
                     </a>
