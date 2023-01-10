@@ -1,5 +1,4 @@
 import { browser } from "$app/environment";
-import { config } from "$lib/config";
 
 const isLocalStorageAvailable = () => {
 	try {
@@ -18,8 +17,6 @@ const isDarkMode = () => {
 			darkMode = localStorage.theme === "dark";
 		} else if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
 			darkMode = true;
-		} else {
-			darkMode = config.theme === "dark";
 		}
 	} else if (isLocalStorageAvailable()) {
 		darkMode = localStorage.theme === "dark";
