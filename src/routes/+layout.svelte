@@ -46,6 +46,7 @@
                             const link = entry.target as HTMLAnchorElement;
                             preloadData(link.href);
                             preloadCode(link.href);
+                            observer.unobserve(link);
                         }
                     });
                 },
