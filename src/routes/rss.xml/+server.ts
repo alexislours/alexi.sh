@@ -1,12 +1,12 @@
 import { config } from "$lib/config.js";
-import { getEntries } from "$utils/entries.js";
+import { getPosts } from "$utils/entries";
 import type { Post } from "$lib/types/post";
 
 export const prerender = true;
 
 /** @type {import('@sveltejs/kit').RequestHandler} */
 export async function GET() {
-	const posts = getEntries("posts").slice(0, 10);
+	const posts = getPosts().slice(0, 10);
 
 	return new Response(xml(posts), {
 		headers: {

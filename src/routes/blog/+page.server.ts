@@ -1,9 +1,9 @@
-import { getEntries, getTags } from "$utils/entries.js";
+import { getPosts, getTags } from "$utils/entries";
 import { error } from "@sveltejs/kit";
 
 /** @type {import('./$types').PageServerLoad} */
 export async function load() {
-	const posts = getEntries("posts");
+	const posts = getPosts();
 	if (!posts) {
 		throw error(404, "No post found");
 	}

@@ -1,6 +1,6 @@
 import { config, navLinks } from "$lib/config";
 import type { Post } from "$lib/types/post";
-import { getEntries } from "$utils/entries.js";
+import { getPosts } from "$utils/entries.js";
 
 export const prerender = true;
 
@@ -8,7 +8,7 @@ const trimSlash = (str: string) => str.replace(/^\/|\/$/g, "");
 
 export async function GET() {
 	const pages = navLinks;
-	const posts: Post[] = getEntries("posts");
+	const posts = getPosts();
 	const body = sitemap(posts, pages);
 
 	return new Response(body, {

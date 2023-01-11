@@ -1,6 +1,6 @@
 import { error } from "@sveltejs/kit";
 import { slug } from "github-slugger";
-import { getEntries } from "$utils/entries.js";
+import { getPosts } from "$utils/entries.js";
 
 function slugsArray(tags: string[]) {
 	return tags?.map((t) => slug(t)) || [];
@@ -9,7 +9,7 @@ function slugsArray(tags: string[]) {
 /** @type {import('./$types').PageServerLoad} */
 export async function load({ params }: { params: { tag: string } }) {
 	const { tag } = params;
-	const posts = getEntries("posts");
+	const posts = getPosts();
 	const filteredPosts = posts.filter((p) => slugsArray(p.tags).includes(tag));
 
 	if (!filteredPosts) {

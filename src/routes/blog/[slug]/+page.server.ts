@@ -1,9 +1,9 @@
 import { error } from "@sveltejs/kit";
-import { getEntries } from "$utils/entries.js";
+import { getPosts } from "$utils/entries.js";
 
 /** @type {import('./$types').PageServerLoad} */
 export async function load({ params }: { params: { slug: string } }) {
-	const posts = getEntries("posts");
+	const posts = getPosts();
 	const { slug } = params;
 	const post = posts.find((p) => p.slug === slug);
 
