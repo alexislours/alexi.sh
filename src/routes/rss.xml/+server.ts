@@ -34,7 +34,7 @@ const xml = (
 			${post.content}
 	  		]]>
 		  </description>
-          <link>${config.domain}/blog/${post.slug}/</link>
+          <link>${config.domain}blog/${post.slug}/</link>
           <pubDate>${new Date(post.date).toISOString()}</pubDate>
         </item>
       `
