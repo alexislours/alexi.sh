@@ -68,6 +68,7 @@ export const getTags = (): TagItem[] => {
 		});
 		return acc;
 	}, {} as Record<string, number>);
+
 	tags = Object.entries(tags).map(([tag, count]) => {
 		return {
 			text: tag,
@@ -75,5 +76,6 @@ export const getTags = (): TagItem[] => {
 			slug: slug(tag)
 		};
 	});
-	return tags;
+
+	return tags.sort((a: TagItem, b: TagItem) => (a.count < b.count ? 1 : -1));
 };
