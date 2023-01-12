@@ -7,7 +7,7 @@
 	let year = new Date().getFullYear();
 </script>
 
-<footer>
+<footer class="mt-auto">
 	<div class="mt-16 flex flex-col items-center border-t pt-6 gap-2">
 		<div class="flex items-center justify-center gap-4 h-12">
 			<a href={config.gitlab} target="_blank" rel="noopener noreferrer" aria-label="Gitlab">
