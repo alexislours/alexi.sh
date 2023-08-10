@@ -10,7 +10,10 @@ module.exports = {
   bracketSpacing: true,
   singleAttributePerLine: true,
   endOfLine: "auto",
-  plugins: [require.resolve("prettier-plugin-astro")],
+  plugins: [
+    require.resolve("prettier-plugin-astro"),
+    require.resolve("prettier-plugin-tailwindcss"),
+  ],
   overrides: [
     {
       files: "*.astro",
