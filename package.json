@@ -1,7 +1,12 @@
 {
   "name": "alexi.sh",
+  "description": "My personal website",
+  "repository": "https://gitlab.com/alexislours/alexi.sh",
+  "author": "Alexis LOURS <alexislours@protonmail.com>",
   "type": "module",
   "version": "0.0.1",
+  "private": true,
+  "license": "GPL-3.0",
   "scripts": {
     "dev": "astro dev",
     "start": "astro dev",
