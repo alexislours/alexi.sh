@@ -1,0 +1,33 @@
+---
+import Head from "../../components/Head.astro";
+import Header from "../../components/Header.astro";
+import Project from "../../components/Project.astro";
+import { SITE_TITLE } from "../../constants";
+import { getCollection } from "astro:content";
+
+const posts = (await getCollection("projects")).sort(
+  (a, b) => b.data.start.valueOf() - a.data.start.valueOf()
+);
+---
+
+<html lang="en">
+  <head>
+    <Head
+      title={SITE_TITLE + " - Projects"}
+      description="A list of projects I have worked on."
+    />
+  </head>
+  <body
+    class="bg-white text-zinc-900 motion-safe:transition-all motion-safe:duration-500 dark:bg-zinc-900 dark:text-white">
+    <Header breadcrumbs={[{ path: "/projects", name: "Projects" }]} />
+    <main class="mx-auto mb-5 max-w-3xl px-4 sm:px-6">
+      <div class="container">
+        <p class="text-lg">A list of projects I have worked on.</p>
+        <div class="mb-5 flex flex-wrap justify-center gap-8 pt-6">
+          {posts.map((post) => <Project {...post.data} />)}
+        </div>
+        <p class="text-center text-sm">And many more...</p>
+      </div>
+    </main>
+  </body>
+</html>

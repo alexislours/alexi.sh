@@ -6,13 +6,14 @@ interface Props {
   }>;
 }
 import Logo from "./Logo.astro";
+import ThemeToggle from "./ThemeToggle.astro";
 
 const { breadcrumbs = [] } = Astro.props;
 ---
 
 <header>
   <nav
-    class="mb-10 flex h-20 w-screen items-center justify-between gap-4 border-b px-6">
+    class="mb-5 flex h-20 w-screen items-center justify-between gap-4 border-b px-6">
     <div class="item-center flex gap-3">
       <a
         href="/"
@@ -32,8 +33,10 @@ const { breadcrumbs = [] } = Astro.props;
         ))
       }
     </div>
-    <div>
-      <a href="/blog"> Blog</a>
+    <div class="flex justify-center gap-4">
+      <ThemeToggle />
+      <a href="/projects">Projects</a>
+      <a href="/blog">Blog</a>
     </div>
   </nav>
 </header>
