@@ -1,0 +1,58 @@
+---
+import type { CollectionEntry } from "astro:content";
+import Head from "../components/Head.astro";
+import Header from "../components/Header.astro";
+import FormattedDate from "../components/FormattedDate.astro";
+import { Image } from "astro:assets";
+
+type Props = CollectionEntry<"blog">["data"];
+
+const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
+---
+
+<html lang="en">
+  <head>
+    <Head
+      title={title}
+      description={description}
+      image={heroImage?.src}
+    />
+  </head>
+
+  <body>
+    <Header breadcrumbs={[{ path: "/blog", name: "Blog" }]} />
+    <main>
+      <article>
+        <div class="hero-image">
+          {
+            heroImage && (
+              <Image
+                width={1020}
+                height={510}
+                src={heroImage}
+                alt=""
+              />
+            )
+          }
+        </div>
+        <div class="prose max-w-none dark:prose-invert">
+          <div>
+            <h1>{title}</h1>
+            <div class="date">
+              <FormattedDate date={pubDate} />
+              {
+                updatedDate && (
+                  <div class="last-updated-on">
+                    Last updated on <FormattedDate date={updatedDate} />
+                  </div>
+                )
+              }
+            </div>
+            <hr />
+          </div>
+          <slot />
+        </div>
+      </article>
+    </main>
+  </body>
+</html>

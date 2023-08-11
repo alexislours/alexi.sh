@@ -10,7 +10,7 @@ module.exports = {
       },
     },
     {
-      files: ["*.ts"],
+      files: ["*.ts", "*.mjs"],
       parser: "@typescript-eslint/parser",
     },
   ],

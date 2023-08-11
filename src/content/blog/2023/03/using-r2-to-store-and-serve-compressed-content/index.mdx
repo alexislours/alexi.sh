@@ -1,0 +1,65 @@
+---
+title: "Using R2 to store and serve compressed content"
+pubDate: 2023-03-28 20:14:00
+description: "How to maximize your Clouldflare R2 free tier"
+tags: ["cloudflare"]
+---
+
+For a side project I was working on, I needed to store and serve a massive amount of GeoJSON files (around 300 000).
+
+While looking for a solution, I came across Cloudflare’s R2 product, which aims to be an alternative to Amazon's S3. The free tier of R2 allows storing up to 10 GB of data, which was very close to what I needed. The sum of all the GeoJSON files was around 11.5 GB uncompressed, but only around 1.5Gb after compressing with `gzip -9`.
+
+After digging around some, I learned that R2 supports receiving compressed files. But documentation was at best lacking, with only [a few forum posts](https://community.cloudflare.com/t/does-r2-respects-content-encoding/426127) mentioning it.
+
+## Preparing the files
+
+First, the files need to be compressed as gzip, while keeping their original filename. I used the following script to do so:
+
+```bash
+#!/bin/bash
+
+for file in some-folder/*.geojson; do
+    gzip -9 "$file"
+    mv "$file.gz" "$file"
+done
+```
+
+## Setting up rclone
+
+The second step is to configure rclone to use R2 as a remote. You can create a token under `R2 > Overview > Manage R2 API Tokens` from your Cloudflare Dashboard.
+
+The following command can be used to find the path of your rclone config file:
+
+```bash
+$ rclone config file
+```
+
+I used the following rclone configuration:
+
+```ini
+[some-bucket]
+type = s3
+provider = Cloudflare
+access_key_id = <key>
+secret_access_key = <secret>
+endpoint = https://<bucket-id>.r2.cloudflarestorage.com
+acl = private
+```
+
+## Uploading the files
+
+You can now use rclone to upload the files to R2. But a few tweaks need to be added to the command to make it work.
+
+```bash
+$ rclone copy --progress --header-upload "Content-Type: application/json" --header-upload "Content-Encoding: gzip" some-folder some-bucket:bucket-path/
+```
+
+The `--header-upload` options are needed to tell R2 that the files are compressed, but also to tell the type of content the original files are.
+
+Figuring this part was what took the most time on my end. Using `--header` over `--header-upload` doesn’t work and will prevent you from transferring any files.
+
+From now on, they can simply be accessed from your R2 bucket while being stored compressed. The files will also respect the `Accept-Encoding` header from clients, so the file can be transferred as gzip, brotli or simply plain text depending on what the client supports.
+
+It's also worth noting that you can also use brotli compression for this, but your files will only be served as brotli, no matter the `Accept-Encoding` header of the client, but at least the Content-Encoding header will be set to brotli.
+
+The project I needed this for is https://inat-map.birdi.ng, which allows people to see heatmaps of observations from iNaturalist and uses the GeoJSON files to display the observations on a map.

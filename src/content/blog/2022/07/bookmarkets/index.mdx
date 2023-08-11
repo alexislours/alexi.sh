@@ -1,0 +1,91 @@
+---
+title: "Using bookmarklets"
+pubDate: 2022-07-18 10:37:00
+description: "An often forgotten but quite useful feature of browsers."
+tags: ["JavaScript"]
+---
+
+A few years ago, bookmarklets (or favlets) were a lot more common than they are now. Most of their common features were either implemented in browsers or turned into extensions.
+
+At times, they still remain the easiest way to quickly extend a browser's functionality without having to find an extension.
+
+This is also a solution that works across all major browsers, be it Safari, Firefox or any Chromium based browsers.
+
+## Creating a bookmarklet
+
+A bookmarklet is simply JavaScript code starting with the `javascript:` URL scheme.
+
+There are 3 ways to create a bookmarklet:
+
+1. Using an [Immediately Invoked Function Expression (IIFE)](https://developer.mozilla.org/en-US/docs/Glossary/IIFE):
+
+```js
+javascript: (function () {
+  // your code
+})();
+
+// using arrow functions
+javascript: (() => {
+  // your code
+})();
+```
+
+2. Using the `void` operator:
+
+```js
+javascript: void (function () {
+  // your code
+})();
+```
+
+3. Directly calling a native function:
+
+```js
+javascript: window.open("https://example.com");
+```
+
+## Sharing a bookmarklet
+
+Bookmarklets can be shared in two ways:
+
+- Manually adding the bookmarklet to your browser's bookmarks
+- Creating an HTML link as follows that can be dragged into the bookmark bar:
+
+```html
+<a href="javascript:(/** your code **/)()">Bookmarklet</a>
+```
+
+Bookmarklets are generally minified into a single line of code to be embedded in your HTML.
+
+## Examples of bookmarklets
+
+Open the current page in the site archive.ph to bypass paywalls or archive it:
+
+```js
+javascript: window.open("https://archive.ph/" + location.href, "_blank");
+```
+
+Open the current page in the Wayback Machine:
+
+```js
+javascript: window.open(
+  "https://web.archive.org/web/*/" + location.href,
+  "_blank"
+);
+```
+
+Scroll to the top of the page:
+
+```js
+javascript: window.scrollTo({ top: 0, behavior: "smooth" });
+```
+
+Enter edit mode:
+
+```js
+javascript: (() => {
+  document.body.contentEditable !== "true"
+    ? (document.body.contentEditable = "true")
+    : (document.body.contentEditable = "false");
+})();
+```

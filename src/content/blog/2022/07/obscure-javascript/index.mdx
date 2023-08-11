@@ -1,0 +1,126 @@
+---
+title: "Obscure JavaScript"
+pubDate: 2022-07-17 16:24:00
+description: "Some lesser known features of JavaScript."
+tags: ["JavaScript"]
+heroImage: "./hero.jpg"
+---
+
+JavaScript has some features that surprisingly few people know about. In this post, I'll talk about some of those features.
+
+## `void` operator
+
+The `void` operator is one with a funny history.
+Before ES6, `undefined` wasn't a reserved keyword in JavaScript and thus could be overwritten.
+
+```js
+undefined = "foo";
+let a;
+console.log(a == undefined); // false
+```
+
+The void operator **_always_** returns `undefined` after evaluating the expression, no matter what the resulting value of the expression is.
+
+```js
+void 0; // undefined
+void 0; // undefined
+void 1 + 1; // undefined
+```
+
+The `void` operator can also be used with [immediately-invoked function expression](https://developer.mozilla.org/en-US/docs/Glossary/IIFE) over parenthesis wrapping, but this should be avoided for the sake of readability.
+
+```js
+// with parenthesis wrapping
+(function() {
+    console.log("Hello");
+})();
+
+// using the void operator
+void function() {
+    console.log("Hello");
+}();
+
+// Uncaught SyntaxError
+function() {
+    console.log("Hello");
+}();
+```
+
+It can also be used with arrow functions to avoid anything being returned if another function is called.
+
+```js
+const doSomething = () => void someOtherFunction();
+```
+
+## Labeled loops
+
+You can label loops in JavaScript using any non-reserved keywords.
+These labels can then be used to break out of nested loops or use the `continue` keyword.
+
+```js
+let i, j;
+
+top: for (i = 0; i < 3; i++) {
+  for (j = 0; j < 3; j++) {
+    console.log("i = " + i + ", j = " + j);
+    if (i === 1 && j === 1) {
+      break top; // will break out of top when i = 1 and j = 1
+    }
+  }
+}
+```
+
+## Comma operator
+
+The comma operator evaluate each operand from left to right and returns the last one.
+This can be useful to make shorter lambda functions or modify and assign variables in a single statement.
+
+```js
+const multiply = (x, y) => (console.log(x, y), x * y);
+
+let x = 1;
+x = (x++, x); // x = 2
+```
+
+## The `arguments` object
+
+Every JavaScript functions have an `arguments` array-like object that contains the arguments passed to the function. This object has most been replaced by the ES6 `...` spread operator since it isn't available in arrow functions but it is still likely to find it in legacy code bases.
+
+```js
+function toCSV() {
+  return Array.from(arguments).join(",");
+}
+toCSV(1, 2, 3); // "1,2,3"
+```
+
+Using the spread operator:
+
+```js
+const toCSV = (...args) => {
+  return Array.from(args).join(",");
+};
+toCSV(1, 2, 3); // "1,2,3"
+```
+
+## The `debugger` statement
+
+The `debugger` statement can be used to set a breakpoint in the code. It can be useful as quick way to set a breakpoint if your IDE doesn't integrate with a browser for example.
+
+```js
+debugger;
+// some code to debug
+```
+
+## Function properties
+
+JavaScript functions can have properties. This can be used to store data that is related to the function.
+
+```js
+function foo() {
+  foo.executionCount++;
+  if (foo.executionCount === 3) {
+    console.log("executed 3 times");
+  }
+}
+foo.executionCount = 0;
+```

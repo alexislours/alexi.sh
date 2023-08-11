@@ -1,0 +1,19 @@
+---
+import kingfisher from "../assets/error/kingfisher.png";
+import { Image } from "astro:assets";
+---
+
+<div class="flex h-screen w-screen flex-col items-center justify-center gap-4">
+  <Image
+    src={kingfisher}
+    alt="Logo"
+    width="900"
+    class="max-w-[90%] sm:max-w-[500px]"
+  />
+  <h1 class="text-7xl font-bold">404</h1>
+  <a
+    href="/"
+    class="rounded-lg border px-6 py-2 text-xl font-semibold">
+    Go Home
+  </a>
+</div>

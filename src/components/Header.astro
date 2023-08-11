@@ -1,0 +1,39 @@
+---
+interface Props {
+  breadcrumbs?: Array<{
+    name: string;
+    path: string;
+  }>;
+}
+import Logo from "./Logo.astro";
+
+const { breadcrumbs = [] } = Astro.props;
+---
+
+<header>
+  <nav
+    class="mb-10 flex h-20 w-screen items-center justify-between gap-4 border-b px-6">
+    <div class="item-center flex gap-3">
+      <a
+        href="/"
+        class="transition-transform hover:scale-105 motion-safe:duration-200">
+        <Logo />
+      </a>
+      {
+        breadcrumbs.map((breadcrumb) => (
+          <>
+            <span>/</span>
+            <a
+              class="bg-gradient-to-r from-current to-current bg-no-repeat font-semibold [background-position:0_88%] [background-size:0%_0.2em] hover:[background-size:100%_0.2em] focus:[background-size:100%_0.2em] motion-safe:transition-all motion-safe:duration-300"
+              href={breadcrumb.path}>
+              {breadcrumb.name}
+            </a>
+          </>
+        ))
+      }
+    </div>
+    <div>
+      <a href="/blog"> Blog</a>
+    </div>
+  </nav>
+</header>
