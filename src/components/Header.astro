@@ -6,15 +6,15 @@ interface Props {
   }>;
 }
 import Logo from "./Logo.astro";
+import Sidebar from "./Sidebar.astro";
 import ThemeToggle from "./ThemeToggle.astro";
 
 const { breadcrumbs = [] } = Astro.props;
 ---
 
 <header>
-  <nav
-    class="mb-5 flex h-20 w-screen items-center justify-between gap-4 border-b px-6">
-    <div class="item-center flex gap-3">
+  <nav class="mb-5 flex h-20 w-screen items-center gap-4 border-b px-6">
+    <div class="item-center flex flex-1 gap-3">
       <a
         href="/"
         class="transition-transform hover:scale-105 motion-safe:duration-200">
@@ -33,10 +33,13 @@ const { breadcrumbs = [] } = Astro.props;
         ))
       }
     </div>
-    <div class="flex justify-center gap-4">
-      <ThemeToggle />
+    <div class="hidden justify-center gap-4 md:visible md:flex">
       <a href="/projects">Projects</a>
       <a href="/blog">Blog</a>
+    </div>
+    <ThemeToggle />
+    <div class="flex justify-center gap-4 md:hidden">
+      <Sidebar />
     </div>
   </nav>
 </header>

@@ -1,0 +1,60 @@
+---
+import { SIDEBAR_LINKS } from "../constants";
+---
+
+<input
+  type="checkbox"
+  id="toggle"
+  class="peer hidden"
+/>
+
+<label for="toggle">
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    fill="none"
+    viewBox="0 0 24 24"
+    stroke-width="2.5"
+    stroke="currentColor"
+    class="h-6 w-6 cursor-pointer">
+    <path
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
+    ></path>
+  </svg>
+</label>
+
+<aside
+  class="fixed right-[-300px] top-0 z-20 flex h-full w-[300px] max-w-[90%] flex-col gap-2 border-l bg-white text-current transition-[right] duration-[0.3s] ease-[ease-in-out] peer-checked:right-0 dark:border-l-zinc-700 dark:bg-zinc-900">
+  <label
+    for="toggle"
+    class="mb-3 mr-5 mt-5 cursor-pointer self-end">
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      fill="none"
+      viewBox="0 0 24 24"
+      stroke-width="2.5"
+      stroke="currentColor"
+      class="h-6 w-6">
+      <path
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        d="M6 18L18 6M6 6l12 12"
+      ></path>
+    </svg>
+  </label>
+  {
+    SIDEBAR_LINKS.map((link) => (
+      <a
+        href={link.href}
+        class="mx-4 rounded-md px-5 py-3 transition-all duration-300 hover:bg-gray-100 dark:border-zinc-700 dark:hover:bg-zinc-800">
+        {link.title}
+      </a>
+    ))
+  }
+</aside>
+
+<label
+  for="toggle"
+  class="fixed left-0 top-0 -z-10 h-screen w-screen opacity-0 backdrop-blur transition-all duration-500 peer-checked:z-10 peer-checked:opacity-100">
+</label>
