@@ -2,12 +2,14 @@
 import type { CollectionEntry } from "astro:content";
 import Head from "../components/Head.astro";
 import Header from "../components/Header.astro";
+import Tag from "../components/Tag.astro";
 import FormattedDate from "../components/FormattedDate.astro";
 import { Image } from "astro:assets";
 
 type Props = CollectionEntry<"blog">["data"];
 
-const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
+const { title, description, pubDate, updatedDate, heroImage, tags } =
+  Astro.props;
 ---
 
 <html lang="en">
@@ -19,8 +21,7 @@ const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
     />
   </head>
 
-  <body
-    class="bg-white text-zinc-900 motion-safe:transition-all motion-safe:duration-500 dark:bg-zinc-900 dark:text-white">
+  <body>
     <Header breadcrumbs={[{ path: "/blog", name: "Blog" }]} />
     <main class="mx-auto mt-5 max-w-3xl px-4 sm:px-6">
       <article>
@@ -36,6 +37,9 @@ const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
               />
             )
           }
+        </div>
+        <div class="mb-5">
+          {tags.map((tag) => <Tag tag={tag} />)}
         </div>
         <div
           class="prose mb-10 max-w-none dark:prose-invert prose-code:before:hidden prose-code:after:hidden prose-img:mx-auto">

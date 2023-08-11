@@ -17,8 +17,7 @@ const posts = (await getCollection("projects")).sort(
       description="A list of projects I have worked on."
     />
   </head>
-  <body
-    class="bg-white text-zinc-900 motion-safe:transition-all motion-safe:duration-500 dark:bg-zinc-900 dark:text-white">
+  <body>
     <Header breadcrumbs={[{ path: "/projects", name: "Projects" }]} />
     <main class="mx-auto mb-5 max-w-3xl px-4 sm:px-6">
       <div class="container">

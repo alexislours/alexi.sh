@@ -1,12 +1,28 @@
 ---
-import Head from "../../components/Head.astro";
-import Header from "../../components/Header.astro";
-import Tag from "../../components/Tag.astro";
-import { SITE_DESCRIPTION, SITE_TITLE } from "../../constants";
 import { getCollection } from "astro:content";
+import Head from "../../../components/Head.astro";
+import Header from "../../../components/Header.astro";
+import { SITE_TITLE, SITE_DESCRIPTION } from "../../../constants";
+import Tag from "../../../components/Tag.astro";
 
-const posts = (await getCollection("blog")).sort(
-  (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
+export async function getStaticPaths() {
+  const posts = await getCollection("blog");
+  const tags = posts.reduce((acc, post) => {
+    post.data.tags.forEach((tag) => {
+      if (!acc.includes(tag)) {
+        acc.push(tag);
+      }
+    });
+    return acc;
+  }, [] as string[]);
+
+  return tags.map((tag) => ({ params: { tag: tag.toLowerCase() } }));
+}
+
+const { tag = "" } = Astro.params;
+
+const posts = await getCollection("blog", (post) =>
+  post.data.tags.map((tag) => tag.toLowerCase()).includes(tag)
 );
 ---
 

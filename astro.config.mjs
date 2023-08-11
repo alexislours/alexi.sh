@@ -9,7 +9,7 @@ export default defineConfig({
   site: "https://alexi.sh",
   compressHTML: true,
   build: {
-    inlineStylesheets: "always",
+    inlineStylesheets: "auto",
   },
   experimental: {
     assets: true,
