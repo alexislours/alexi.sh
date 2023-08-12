@@ -25,7 +25,7 @@ import { SIDEBAR_LINKS } from "../constants";
 </label>
 
 <aside
-  class="fixed right-[-300px] top-0 z-20 flex h-full w-[300px] max-w-[90%] flex-col gap-2 border-l bg-white text-current transition-[right] duration-[0.3s] ease-[ease-in-out] peer-checked:right-0 dark:border-l-zinc-700 dark:bg-zinc-900">
+  class="fixed right-[-300px] top-0 z-20 flex h-full w-[300px] max-w-[90%] flex-col gap-2 border-l bg-white text-current peer-checked:right-0 motion-safe:transition-[right] motion-safe:duration-300 motion-safe:ease-in-out dark:border-l-zinc-700 dark:bg-zinc-900">
   <label
     for="toggle"
     class="mb-3 mr-5 mt-5 cursor-pointer self-end">
@@ -47,7 +47,7 @@ import { SIDEBAR_LINKS } from "../constants";
     SIDEBAR_LINKS.map((link) => (
       <a
         href={link.href}
-        class="mx-4 rounded-md px-5 py-3 transition-all duration-300 hover:bg-gray-100 dark:border-zinc-700 dark:hover:bg-zinc-800">
+        class="mx-4 rounded-md px-5 py-3 hover:bg-gray-100 motion-safe:transition-all motion-safe:duration-300 dark:border-zinc-700 dark:hover:bg-zinc-800">
         {link.title}
       </a>
     ))
@@ -56,5 +56,5 @@ import { SIDEBAR_LINKS } from "../constants";
 
 <label
   for="toggle"
-  class="fixed left-0 top-0 -z-10 h-screen w-screen opacity-0 backdrop-blur transition-all duration-500 peer-checked:z-10 peer-checked:opacity-100">
+  class="fixed left-0 top-0 -z-10 h-screen w-screen opacity-0 backdrop-blur peer-checked:z-10 peer-checked:opacity-100 motion-safe:transition-all motion-safe:duration-500">
 </label>
