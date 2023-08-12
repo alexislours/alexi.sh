@@ -27,6 +27,7 @@ const { title, description, image } = Astro.props;
   type="image/png"
   href="/favicon.png"
 />
+<!-- Disable requests to /favicon.ico -->
 <link
   rel="icon"
   type="image/x-icon"
@@ -106,6 +107,7 @@ const { title, description, image } = Astro.props;
 
 <GlobalStyle />
 
+<!-- Dark mode detection -->
 <script is:inline>
   const theme = (() => {
     if (typeof localStorage !== "undefined" && localStorage.getItem("theme")) {
