@@ -1,36 +1,20 @@
 ---
-import Footer from "../components/Footer.astro";
-import Head from "../components/Head.astro";
-import Header from "../components/Header.astro";
-import { SITE_DESCRIPTION, SITE_TITLE } from "../constants";
+import BaseLayout from "../layouts/BaseLayout.astro";
 ---
 
-<html lang="en">
-  <head>
-    <Head
-      title={SITE_TITLE}
-      description={SITE_DESCRIPTION}
-    />
-  </head>
-  <body>
-    <Header />
+<BaseLayout>
+  <div class="container">
+    <section>
+      <h1 class="text-center text-6xl font-bold">Alexis LOURS</h1>
+      <p class="mt-5 text-center">Full-Stack developer from France.</p>
+    </section>
 
-    <main class="mx-auto mb-5 max-w-3xl self-start px-4 sm:px-6">
-      <div class="container">
-        <section>
-          <h1 class="text-center text-6xl font-bold">Alexis LOURS</h1>
-          <p class="mt-5 text-center">Full-Stack developer from France.</p>
-        </section>
-
-        <section class="mt-32">
-          <h2 class="text-3xl font-bold">About me</h2>
-          <p class="mt-5">
-            I'm a developer mostly working with web technologies. I'm currently
-            working as a full-stack developer at Etam.
-          </p>
-        </section>
-      </div>
-    </main>
-    <Footer />
-  </body>
-</html>
+    <section class="mt-32">
+      <h2 class="text-3xl font-bold">About me</h2>
+      <p class="mt-5">
+        I'm a developer mostly working with web technologies. I'm currently
+        working as a full-stack developer at Etam.
+      </p>
+    </section>
+  </div>
+</BaseLayout>

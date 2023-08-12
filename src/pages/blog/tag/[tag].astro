@@ -1,10 +1,8 @@
 ---
 import { getCollection } from "astro:content";
-import Head from "../../../components/Head.astro";
-import Header from "../../../components/Header.astro";
 import { SITE_TITLE, SITE_DESCRIPTION } from "../../../constants";
 import Tag from "../../../components/Tag.astro";
-import Footer from "../../../components/Footer.astro";
+import BaseLayout from "../../../layouts/BaseLayout.astro";
 
 export async function getStaticPaths() {
   const posts = await getCollection("blog");
@@ -27,52 +25,42 @@ const posts = await getCollection("blog", (post) =>
 );
 ---
 
-<html lang="en">
-  <head>
-    <Head
-      title={SITE_TITLE + " - Blog"}
-      description={SITE_DESCRIPTION}
-    />
-  </head>
-  <body>
-    <Header
-      breadcrumbs={[
-        { path: "/blog", name: "Blog" },
-        { path: Astro.url.pathname, name: "Tag" },
-      ]}
-    />
-    <main class="mx-auto w-full max-w-3xl flex-1 px-4 sm:px-6">
-      <ul class="mb-5 flex flex-col gap-3">
-        {
-          posts.map((post) => (
-            <li class="rounded-lg bg-neutral-50 p-5 dark:bg-zinc-800">
-              <a
-                class="text-2xl font-bold leading-8 tracking-tight"
-                href={`/blog/${post.slug}/`}>
-                <h4 class="title">{post.data.title}</h4>
-              </a>
+<BaseLayout
+  title={SITE_TITLE + " - Blog"}
+  description={SITE_DESCRIPTION}
+  mainClass="flex-1"
+  breadcrumbs={[
+    { path: "/blog", name: "Blog" },
+    { path: Astro.url.pathname, name: "Tag" },
+  ]}>
+  <ul class="mb-5 flex flex-col gap-3">
+    {
+      posts.map((post) => (
+        <li class="rounded-lg bg-neutral-50 p-5 dark:bg-zinc-800">
+          <a
+            class="text-2xl font-bold leading-8 tracking-tight"
+            href={`/blog/${post.slug}/`}>
+            <h4 class="title">{post.data.title}</h4>
+          </a>
 
-              {post.data.tags.map((tag) => (
-                <Tag tag={tag} />
-              ))}
+          {post.data.tags.map((tag) => (
+            <Tag tag={tag} />
+          ))}
 
-              <div class="mt-3 max-w-none text-gray-500 dark:text-gray-400">
-                {post.data.description}
-              </div>
+          <div class="mt-3 max-w-none text-gray-500 dark:text-gray-400">
+            {post.data.description}
+          </div>
 
-              <div class="mt-3 text-base font-medium">
-                <a
-                  href={`/blog/${post.slug}`}
-                  class="text-primary-500"
-                  aria-label={`Read "${post.data.title}"`}>
-                  Read more &rarr;
-                </a>
-              </div>
-            </li>
-          ))
-        }
-      </ul>
-    </main>
-    <Footer />
-  </body>
-</html>
+          <div class="mt-3 text-base font-medium">
+            <a
+              href={`/blog/${post.slug}`}
+              class="text-primary-500"
+              aria-label={`Read "${post.data.title}"`}>
+              Read more &rarr;
+            </a>
+          </div>
+        </li>
+      ))
+    }
+  </ul>
+</BaseLayout>

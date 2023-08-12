@@ -1,0 +1,44 @@
+---
+import Footer from "../components/Footer.astro";
+import Head from "../components/Head.astro";
+import Header from "../components/Header.astro";
+import { SITE_TITLE, SITE_DESCRIPTION } from "../constants";
+
+interface Props {
+  title?: string;
+  description?: string;
+  image?: string | undefined;
+  mainClass?: string;
+  breadcrumbs?: Array<{
+    name: string;
+    path: string;
+  }>;
+}
+
+const {
+  title = SITE_TITLE,
+  description = SITE_DESCRIPTION,
+  breadcrumbs = [],
+  image,
+  mainClass = "",
+} = Astro.props;
+---
+
+<html lang="en">
+  <head>
+    <Head
+      title={title}
+      description={description}
+      image={image}
+    />
+  </head>
+  <body>
+    <Header breadcrumbs={breadcrumbs} />
+    <main
+      class={"mx-auto mb-5 max-w-3xl w-full self-start px-4 sm:px-6" +
+        (mainClass && ` ${mainClass}`)}>
+      <slot />
+    </main>
+    <Footer />
+  </body>
+</html>
