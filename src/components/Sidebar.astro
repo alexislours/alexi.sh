@@ -8,11 +8,15 @@ import { SIDEBAR_LINKS } from "../constants";
   class="peer hidden"
 />
 
-<label for="toggle">
+<label
+  for="toggle"
+  role="button"
+  tabindex="0">
   <svg
     xmlns="http://www.w3.org/2000/svg"
     fill="none"
     viewBox="0 0 24 24"
+    aria-label="Open sidebar"
     stroke-width="2.5"
     stroke="currentColor"
     class="h-8 w-8 cursor-pointer">
@@ -28,11 +32,14 @@ import { SIDEBAR_LINKS } from "../constants";
   class="fixed right-[-300px] top-0 z-20 flex h-full w-[300px] max-w-[90%] flex-col gap-2 border-l bg-white text-current peer-checked:right-0 motion-safe:transition-[right] motion-safe:duration-300 motion-safe:ease-in-out dark:border-l-zinc-700 dark:bg-zinc-900">
   <label
     for="toggle"
+    role="button"
+    tabindex="0"
     class="mb-3 mr-5 mt-5 cursor-pointer self-end">
     <svg
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
       viewBox="0 0 24 24"
+      aria-label="Close sidebar"
       stroke-width="2.5"
       stroke="currentColor"
       class="h-6 w-6">
@@ -56,5 +63,8 @@ import { SIDEBAR_LINKS } from "../constants";
 
 <label
   for="toggle"
+  role="button"
+  tabindex="0"
+  aria-label="Close sidebar"
   class="fixed left-0 top-0 -z-10 h-screen w-screen opacity-0 backdrop-blur peer-checked:z-10 peer-checked:opacity-100 motion-safe:transition-all motion-safe:duration-500">
 </label>
