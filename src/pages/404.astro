@@ -1,8 +1,13 @@
 ---
 import kingfisher from "../assets/error/kingfisher.png";
 import { Image } from "astro:assets";
+import Head from "../components/Head.astro";
 ---
 
+<Head
+  title="404"
+  description="Looks like the bird already left!"
+/>
 <main class="flex h-screen w-screen flex-col items-center justify-center gap-4">
   <Image
     src={kingfisher}
