@@ -8,4 +8,4 @@ The code for this project is licensed under the GPLv3 license (see [LICENSE](LIC
 
 - `src/content` — Media files and text content are shared under the CC-BY-4.0 license.
 
-See [src/content/_LICENSE](src/content/_LICENSE) for more information.
+See [src/content/\_LICENSE](src/content/_LICENSE) for more information.
