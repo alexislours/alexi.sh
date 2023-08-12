@@ -13,10 +13,11 @@ const { breadcrumbs = [] } = Astro.props;
 ---
 
 <header>
-  <nav class="mb-5 flex h-20 w-screen items-center gap-4 border-b px-6">
+  <nav class="mb-5 flex h-20 w-screen items-center gap-4 px-6">
     <div class="item-center flex flex-1 gap-3">
       <a
         href="/"
+        aria-label="Home page"
         class="transition-transform hover:scale-105 motion-safe:duration-200">
         <Logo />
       </a>
@@ -33,7 +34,7 @@ const { breadcrumbs = [] } = Astro.props;
         ))
       }
     </div>
-    <div class="hidden justify-center gap-4 md:visible md:flex">
+    <div class="mr-4 hidden justify-center gap-6 md:visible md:flex">
       <a href="/projects">Projects</a>
       <a href="/blog">Blog</a>
     </div>

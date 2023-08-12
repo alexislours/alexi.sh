@@ -1,0 +1,40 @@
+---
+import { REPO, EMAIL } from "../constants";
+import Gitlab from "./icons/Gitlab.astro";
+import Mail from "./icons/Mail.astro";
+import Rss from "./icons/Rss.astro";
+let startYear = 2022;
+let year = new Date().getFullYear();
+---
+
+<footer class="place-end">
+  <div class="mt-5 flex flex-col items-center gap-2 pt-6">
+    <div class="flex h-12 items-center justify-center gap-4">
+      <a
+        href={REPO}
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="Gitlab">
+        <Gitlab />
+      </a>
+      <a
+        href={`mailto:${EMAIL}`}
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="Email">
+        <Mail />
+      </a>
+
+      <a
+        href="/feed.xml"
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="RSS">
+        <Rss />
+      </a>
+    </div>
+    <div class="mb-4 flex space-x-2 text-sm text-gray-500 dark:text-gray-100">
+      © {startYear}-{year} Alexis LOURS
+    </div>
+  </div>
+</footer>

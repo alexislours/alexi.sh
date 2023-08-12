@@ -1,4 +1,5 @@
 ---
+import Footer from "../../components/Footer.astro";
 import Head from "../../components/Head.astro";
 import Header from "../../components/Header.astro";
 import Tag from "../../components/Tag.astro";
@@ -19,7 +20,7 @@ const posts = (await getCollection("blog")).sort(
   </head>
   <body>
     <Header breadcrumbs={[{ path: "/blog", name: "Blog" }]} />
-    <main class="mx-auto max-w-3xl px-4 sm:px-6">
+    <main class="mx-auto w-full max-w-3xl flex-1 px-4 sm:px-6">
       <ul class="mb-5 flex flex-col gap-3">
         {
           posts.map((post) => (
@@ -51,5 +52,6 @@ const posts = (await getCollection("blog")).sort(
         }
       </ul>
     </main>
+    <Footer />
   </body>
 </html>

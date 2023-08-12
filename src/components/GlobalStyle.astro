@@ -2,6 +2,14 @@
   body {
     background-color: rgb(255 255 255);
     color: rgb(24 24 27);
+    min-height: 100vh;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  main {
+    flex: 1 0 auto; /* This allows the main content to grow and occupy all available space */
   }
   :global(.dark) body {
     background-color: rgb(24 24 27);

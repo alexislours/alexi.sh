@@ -5,3 +5,5 @@ export const SIDEBAR_LINKS: { title: string; href: string }[] = [
   { title: "Blog", href: "/blog" },
   { title: "Projects", href: "/projects" },
 ];
+export const EMAIL = "alexislours@protonmail.com";
+export const REPO = "https://gitlab.com/alexislours/alexi.sh";
