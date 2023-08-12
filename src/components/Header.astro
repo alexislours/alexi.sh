@@ -14,7 +14,7 @@ const { breadcrumbs = [] } = Astro.props;
 
 <header>
   <nav class="mb-5 flex h-20 w-screen items-center gap-4 px-6">
-    <div class="item-center flex flex-1 gap-3">
+    <div class="flex flex-1 items-center gap-3">
       <a
         href="/"
         aria-label="Home page"
@@ -26,7 +26,7 @@ const { breadcrumbs = [] } = Astro.props;
           <>
             <span>/</span>
             <a
-              class="bg-gradient-to-r from-current to-current bg-no-repeat font-semibold [background-position:0_88%] [background-size:0%_0.2em] hover:[background-size:100%_0.2em] focus:[background-size:100%_0.2em] motion-safe:transition-all motion-safe:duration-300"
+              class="font-semibold"
               href={breadcrumb.path}>
               {breadcrumb.name}
             </a>
@@ -35,8 +35,16 @@ const { breadcrumbs = [] } = Astro.props;
       }
     </div>
     <div class="mr-4 hidden justify-center gap-6 md:visible md:flex">
-      <a href="/projects">Projects</a>
-      <a href="/blog">Blog</a>
+      <a
+        href="/projects"
+        class="font-semibold"
+        >Projects</a
+      >
+      <a
+        href="/blog"
+        class="font-semibold"
+        >Blog</a
+      >
     </div>
     <ThemeToggle />
     <div class="flex justify-center gap-4 md:hidden">

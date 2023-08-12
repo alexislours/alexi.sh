@@ -35,7 +35,12 @@ const posts = await getCollection("blog", (post) =>
     />
   </head>
   <body>
-    <Header breadcrumbs={[{ path: "/blog", name: "Blog" }]} />
+    <Header
+      breadcrumbs={[
+        { path: "/blog", name: "Blog" },
+        { path: Astro.url.pathname, name: "Tag" },
+      ]}
+    />
     <main class="mx-auto w-full max-w-3xl flex-1 px-4 sm:px-6">
       <ul class="mb-5 flex flex-col gap-3">
         {
