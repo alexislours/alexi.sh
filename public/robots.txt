@@ -6,6 +6,7 @@ Disallow: /
 
 User-agent: *
 Disallow: /blog/tag/*
+Disallow: /build*
 
 Sitemap: https://alexi.sh/sitemap-index.xml
 
