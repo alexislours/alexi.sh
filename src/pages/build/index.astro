@@ -10,20 +10,12 @@ const projects = await getCollection("projects");
 const uniqueTags = [...new Set(posts.map((post) => post.data.tags).flat())];
 
 const BUILD_TIME = new Date().toISOString();
-
-const BUILD_INFO = `Build info:
-- Build time: ${BUILD_TIME}
-- Version: ${packageJson.version}
-- Astro version: ${packageLockJson.packages["node_modules/astro"].version}
-- Post count: ${posts.length}
-- Tag count: ${uniqueTags.length}
-- Project count: ${projects.length}`;
 ---
 
 <BaseLayout
   title={SITE_TITLE + " - Build Info"}
-  description={BUILD_INFO}
-  breadcrumbs={[{ path: "/projects", name: "Projects" }]}>
+  description="Information about the current build of this site."
+  breadcrumbs={[{ path: "/build", name: "Build" }]}>
   <div
     class="prose mb-10 max-w-none dark:prose-invert prose-code:before:hidden prose-code:after:hidden prose-pre:overflow-x-auto prose-pre:overflow-y-hidden prose-img:mx-auto">
     <h1>Build Info</h1>
