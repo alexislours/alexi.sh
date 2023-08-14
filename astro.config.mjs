@@ -20,5 +20,11 @@ export default defineConfig({
   experimental: {
     assets: true,
   },
-  integrations: [sitemap(), tailwind(), mdx()],
+  integrations: [
+    sitemap({
+      filter: (page) => page !== "https://alexi.sh/build/",
+    }),
+    tailwind(),
+    mdx(),
+  ],
 });

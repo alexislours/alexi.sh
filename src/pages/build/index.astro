@@ -1,0 +1,43 @@
+---
+import { SITE_TITLE } from "../../constants";
+import { getCollection } from "astro:content";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import * as packageJson from "../../../package.json";
+
+const posts = await getCollection("blog");
+const projects = await getCollection("projects");
+const uniqueTags = [...new Set(posts.map((post) => post.data.tags).flat())];
+
+const BUILD_TIME = new Date().toISOString();
+---
+
+<BaseLayout
+  title={SITE_TITLE + " - Build Info"}
+  description="Infos about the current build of the blog."
+  mainClass=""
+  breadcrumbs={[{ path: "/projects", name: "Projects" }]}>
+  <div
+    class="prose mb-10 max-w-none dark:prose-invert prose-code:before:hidden prose-code:after:hidden prose-pre:overflow-x-auto prose-pre:overflow-y-hidden prose-img:mx-auto">
+    <h1>Build Info</h1>
+    <ul>
+      <li>
+        Build time: <code>{BUILD_TIME}</code>.
+      </li>
+      <li>
+        Version: <code>{packageJson.version}</code>.
+      </li>
+      <li>
+        Astro version: <code>{packageJson.dependencies.astro}</code>.
+      </li>
+      <li>
+        Post count: <code>{posts.length}</code>.
+      </li>
+      <li>
+        Tag count: <code>{uniqueTags.length}</code>.
+      </li>
+      <li>
+        Project count: <code>{projects.length}</code>.
+      </li>
+    </ul>
+  </div>
+</BaseLayout>
