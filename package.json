@@ -26,7 +26,7 @@
     "@astrojs/sitemap": "^2.0.1",
     "@astrojs/tailwind": "^4.0.0",
     "@tailwindcss/typography": "^0.5.9",
-    "astro": "^2.10.5",
+    "astro": "^2.10.7",
     "markdown-it": "^13.0.1",
     "rehype-autolink-headings": "^6.1.1",
     "rehype-slug": "^5.1.0",
@@ -41,9 +41,9 @@
     "eslint": "^8.47.0",
     "eslint-plugin-astro": "^0.28.0",
     "eslint-plugin-jsx-a11y": "^6.7.1",
-    "husky": "^8.0.0",
+    "husky": "^8.0.3",
     "prettier": "^3.0.1",
     "prettier-plugin-astro": "^0.11.0",
-    "prettier-plugin-tailwindcss": "^0.5.1"
+    "prettier-plugin-tailwindcss": "^0.5.2"
   }
 }
