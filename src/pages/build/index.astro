@@ -1,9 +1,9 @@
 ---
-import { SITE_TITLE } from "../../constants";
+import { SITE_TITLE } from "@src/constants";
 import { getCollection } from "astro:content";
-import BaseLayout from "../../layouts/BaseLayout.astro";
-import * as packageJson from "../../../package.json";
-import * as packageLockJson from "../../../package-lock.json";
+import BaseLayout from "@layouts/BaseLayout.astro";
+import * as packageJson from "@root/package.json";
+import * as packageLockJson from "@root/package-lock.json";
 
 const posts = await getCollection("blog");
 const projects = await getCollection("projects");

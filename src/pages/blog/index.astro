@@ -1,8 +1,8 @@
 ---
-import Tag from "../../components/Tag.astro";
-import { SITE_DESCRIPTION, SITE_TITLE } from "../../constants";
+import Tag from "@components/Tag.astro";
+import { SITE_DESCRIPTION, SITE_TITLE } from "@src/constants";
 import { getCollection } from "astro:content";
-import BaseLayout from "../../layouts/BaseLayout.astro";
+import BaseLayout from "@layouts/BaseLayout.astro";
 
 const posts = (await getCollection("blog")).sort(
   (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()

@@ -5,9 +5,9 @@ interface Props {
     path: string;
   }>;
 }
-import Logo from "./Logo.astro";
-import Sidebar from "./Sidebar.astro";
-import ThemeToggle from "./ThemeToggle.astro";
+import Logo from "@icons/Logo.astro";
+import Sidebar from "@components/Sidebar.astro";
+import ThemeToggle from "@components/ThemeToggle.astro";
 
 const { breadcrumbs = [] } = Astro.props;
 ---
