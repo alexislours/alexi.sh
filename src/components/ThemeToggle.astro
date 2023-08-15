@@ -10,16 +10,6 @@ import Moon from "@icons/Moon.astro";
   <Moon />
 </button>
 
-<style>
-  html:not(.dark) .sun {
-    display: none;
-  }
-
-  :global(.dark) .moon {
-    display: none;
-  }
-</style>
-
 <script is:inline>
   const handleToggleClick = () => {
     const element = document.documentElement;
