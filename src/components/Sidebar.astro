@@ -1,5 +1,7 @@
 ---
 import { SIDEBAR_LINKS } from "@src/constants";
+import OpenSidebar from "@icons/OpenSidebar.astro";
+import CloseSidebar from "@icons/CloseSidebar.astro";
 ---
 
 <input
@@ -12,20 +14,7 @@ import { SIDEBAR_LINKS } from "@src/constants";
   for="toggle"
   role="button"
   tabindex="0">
-  <svg
-    xmlns="http://www.w3.org/2000/svg"
-    fill="none"
-    viewBox="0 0 24 24"
-    aria-label="Open sidebar"
-    stroke-width="2.5"
-    stroke="currentColor"
-    class="h-8 w-8 cursor-pointer">
-    <path
-      stroke-linecap="round"
-      stroke-linejoin="round"
-      d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
-    ></path>
-  </svg>
+  <OpenSidebar />
 </label>
 
 <aside
@@ -35,20 +24,7 @@ import { SIDEBAR_LINKS } from "@src/constants";
     role="button"
     tabindex="0"
     class="mb-3 mr-5 mt-5 cursor-pointer self-end">
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      fill="none"
-      viewBox="0 0 24 24"
-      aria-label="Close sidebar"
-      stroke-width="2.5"
-      stroke="currentColor"
-      class="h-6 w-6">
-      <path
-        stroke-linecap="round"
-        stroke-linejoin="round"
-        d="M6 18L18 6M6 6l12 12"
-      ></path>
-    </svg>
+    <CloseSidebar />
   </label>
   {
     SIDEBAR_LINKS.map((link) => (

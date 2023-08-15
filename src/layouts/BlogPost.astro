@@ -4,6 +4,8 @@ import Tag from "@components/Tag.astro";
 import FormattedDate from "@components/FormattedDate.astro";
 import { Image } from "astro:assets";
 import BaseLayout from "@layouts/BaseLayout.astro";
+import ArrowRight from "@icons/ArrowRight.astro";
+import ArrowLeft from "@icons/ArrowLeft.astro";
 
 type Props = CollectionEntry<"blog">["data"];
 
@@ -69,20 +71,7 @@ const { title, description, pubDate, updatedDate, heroImage, tags } =
           href={"/blog/" + previousPost.slug}
           data-sveltekit-reload
           class="flex items-center self-start text-sm text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-100">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke-width="1.5"
-            stroke="currentColor"
-            class="h-6 w-6">
-            <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              d="M15.75 19.5L8.25 12l7.5-7.5"
-            />
-          </svg>
-
+          <ArrowLeft />
           <span class="ml-2">{previousPost.data.title}</span>
         </a>
       ) : (
@@ -96,19 +85,7 @@ const { title, description, pubDate, updatedDate, heroImage, tags } =
           data-sveltekit-reload
           class="flex items-center self-end text-sm text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-100">
           <span class="mr-2">{nextPost.data.title}</span>
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke-width="1.5"
-            stroke="currentColor"
-            class="h-6 w-6">
-            <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              d="M8.25 4.5l7.5 7.5-7.5 7.5"
-            />
-          </svg>
+          <ArrowRight />
         </a>
       ) : (
         <div />
