@@ -17,9 +17,6 @@ export default defineConfig({
   build: {
     inlineStylesheets: "auto",
   },
-  experimental: {
-    assets: true,
-  },
   integrations: [
     sitemap({
       filter: (page) => page !== "https://alexi.sh/build/",
