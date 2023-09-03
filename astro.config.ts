@@ -9,7 +9,6 @@ import rehypeAutolinkHeadings from "rehype-autolink-headings/lib";
 
 export default defineConfig({
   site: "https://alexi.sh",
-  compressHTML: true,
   markdown: {
     remarkPlugins: [remarkToc],
     rehypePlugins: [rehypeSlug, [rehypeAutolinkHeadings, { behavior: "wrap" }]],
