@@ -6,6 +6,7 @@ import { Image } from "astro:assets";
 import BaseLayout from "@layouts/BaseLayout.astro";
 import ArrowRight from "@icons/ArrowRight.astro";
 import ArrowLeft from "@icons/ArrowLeft.astro";
+import { fade } from "astro:transitions";
 
 type Props = CollectionEntry<"blog">["data"];
 
@@ -42,13 +43,19 @@ const { title, description, pubDate, updatedDate, heroImage, tags } =
         )
       }
     </div>
-    <div class="mb-5">
+    <div
+      class="mb-5"
+      transition:animate={fade({ duration: "0.4s" })}>
       {tags.map((tag) => <Tag tag={tag} />)}
     </div>
     <div
       class="prose mb-10 max-w-none dark:prose-invert prose-code:before:hidden prose-code:after:hidden prose-pre:overflow-x-auto prose-pre:overflow-y-hidden prose-img:mx-auto">
       <div>
-        <h1 class="mb-0">{title}</h1>
+        <h1
+          class="mb-0"
+          transition:name={title}>
+          {title}
+        </h1>
         <div class="date">
           <FormattedDate date={pubDate} />
           {

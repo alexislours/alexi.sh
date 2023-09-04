@@ -1,4 +1,5 @@
 ---
+import { ViewTransitions } from "astro:transitions";
 import GlobalStyle from "@components/GlobalStyle.astro";
 interface Props {
   title: string;
@@ -122,21 +123,30 @@ const { title, description, image } = Astro.props;
 
 <!-- Dark mode detection -->
 <script is:inline>
-  const theme = (() => {
-    if (typeof localStorage !== "undefined" && localStorage.getItem("theme")) {
-      return localStorage.getItem("theme");
-    }
-    if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
-      return "dark";
-    }
-    return "light";
-  })();
+  const setTheme = () => {
+    const theme = (() => {
+      if (
+        typeof localStorage !== "undefined" &&
+        localStorage.getItem("theme")
+      ) {
+        return localStorage.getItem("theme");
+      }
+      if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
+        return "dark";
+      }
+      return "light";
+    })();
 
-  if (theme === "light") {
-    document.documentElement.classList.remove("dark");
-  } else {
-    document.documentElement.classList.add("dark");
-  }
+    if (theme === "light") {
+      document.documentElement.classList.remove("dark");
+    } else {
+      document.documentElement.classList.add("dark");
+    }
 
-  window.localStorage.setItem("theme", theme);
+    window.localStorage.setItem("theme", theme);
+  };
+
+  document.addEventListener("astro:after-swap", setTheme);
 </script>
+
+<ViewTransitions />
