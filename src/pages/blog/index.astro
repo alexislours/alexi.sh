@@ -20,7 +20,11 @@ const posts = (await getCollection("blog")).sort(
           <a
             class="text-2xl font-bold leading-8 tracking-tight"
             href={`/blog/${post.slug}/`}>
-            <h4 class="title">{post.data.title}</h4>
+            <h4
+              class="title"
+              transition:name={post.data.title}>
+              {post.data.title}
+            </h4>
           </a>
 
           {post.data.tags.map((tag) => (
