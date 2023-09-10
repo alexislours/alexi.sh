@@ -5,7 +5,7 @@ import tailwind from "@astrojs/tailwind";
 import mdx from "@astrojs/mdx";
 import remarkToc from "remark-toc";
 import rehypeSlug from "rehype-slug";
-import rehypeAutolinkHeadings from "rehype-autolink-headings/lib";
+import rehypeAutolinkHeadings from "rehype-autolink-headings";
 
 export default defineConfig({
   site: "https://alexi.sh",
