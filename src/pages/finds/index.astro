@@ -3,6 +3,7 @@ import { SITE_TITLE } from "@src/constants";
 import { getCollection } from "astro:content";
 import BaseLayout from "@layouts/BaseLayout.astro";
 import Finds from "@components/Finds.astro";
+import Rss from "@components/icons/Rss.astro";
 
 const findss = (await getCollection("finds")).sort(
   (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
@@ -11,13 +12,22 @@ const findss = (await getCollection("finds")).sort(
 
 <BaseLayout
   title={SITE_TITLE + " - Finds"}
-  description="A list of projects I have worked on."
+  description="A collection of small websites, tools, and content creators I found interesting."
+  mainClass="flex-1"
   breadcrumbs={[{ path: "/finds", name: "Finds" }]}>
   <div class="container">
     <p class="text-lg">
       A collection of small websites, tools, and content creators I found
       interesting.
     </p>
+
+    <span class="mt-4 flex items-center gap-2">
+      <a
+        href="/finds/feed.xml"
+        class="">
+        <Rss />
+      </a>RSS feed</span
+    >
     <div class="mb-5 flex flex-wrap justify-center gap-8 pt-6">
       {findss.map((finds) => <Finds {...finds.data} />)}
     </div>
