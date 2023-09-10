@@ -8,7 +8,9 @@ interface Props {
 import Logo from "@icons/Logo.astro";
 import Sidebar from "@components/Sidebar.astro";
 import ThemeToggle from "@components/ThemeToggle.astro";
+import { SIDEBAR_LINKS } from "../constants";
 
+const links = SIDEBAR_LINKS.slice(1);
 const { breadcrumbs = [] } = Astro.props;
 ---
 
@@ -35,16 +37,15 @@ const { breadcrumbs = [] } = Astro.props;
       }
     </div>
     <div class="mr-4 hidden justify-center gap-6 md:visible md:flex">
-      <a
-        href="/projects"
-        class="font-semibold"
-        >Projects</a
-      >
-      <a
-        href="/blog"
-        class="font-semibold"
-        >Blog</a
-      >
+      {
+        links.map((link) => (
+          <a
+            href={link.href}
+            class="font-semibold">
+            {link.title}
+          </a>
+        ))
+      }
     </div>
     <ThemeToggle />
     <div class="flex justify-center gap-4 md:hidden">

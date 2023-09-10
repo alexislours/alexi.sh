@@ -1,0 +1,25 @@
+---
+import { SITE_TITLE } from "@src/constants";
+import { getCollection } from "astro:content";
+import BaseLayout from "@layouts/BaseLayout.astro";
+import Finds from "@components/Finds.astro";
+
+const findss = (await getCollection("finds")).sort(
+  (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
+);
+---
+
+<BaseLayout
+  title={SITE_TITLE + " - Finds"}
+  description="A list of projects I have worked on."
+  breadcrumbs={[{ path: "/finds", name: "Finds" }]}>
+  <div class="container">
+    <p class="text-lg">
+      A collection of small websites, tools, and content creators I found
+      interesting.
+    </p>
+    <div class="mb-5 flex flex-wrap justify-center gap-8 pt-6">
+      {findss.map((finds) => <Finds {...finds.data} />)}
+    </div>
+  </div>
+</BaseLayout>
