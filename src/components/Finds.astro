@@ -1,0 +1,53 @@
+---
+import type { CollectionEntry } from "astro:content";
+type Props = CollectionEntry<"finds">["data"];
+import { Image } from "astro:assets";
+
+const { title, description, heroImage, href, pubDate } = Astro.props;
+---
+
+<div class="t w-[21rem]">
+  <div
+    class="h-full overflow-hidden rounded-md border-2 border-gray-200 border-opacity-60 dark:border-zinc-800">
+    <a
+      href={href}
+      target="_blank"
+      rel="noopener noreferrer"
+      aria-label={`Link to ${title}`}>
+      <Image
+        alt={title}
+        src={heroImage}
+        loading="lazy"
+        class="aspect-video w-full object-cover object-center"
+      />
+    </a>
+
+    <div class="p-6">
+      <h2 class="mb-3 text-2xl font-bold leading-8 tracking-tight">
+        {title}
+      </h2>
+      <p class="mb-3 max-w-none text-sm">
+        {
+          pubDate.toLocaleString("en-US", {
+            month: "long",
+            day: "numeric",
+            year: "numeric",
+          })
+        }
+      </p>
+      <p class="mb-3 max-w-none text-gray-500 dark:text-gray-300">
+        {description}
+      </p>
+      <p class="mt-4">
+        <a
+          href={href}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="text-primary-500 hover:text-primary-600 dark:hover:text-primary-400 text-base font-medium leading-6"
+          aria-label={`Link to ${title}`}>
+          Learn more &rarr;
+        </a>
+      </p>
+    </div>
+  </div>
+</div>
