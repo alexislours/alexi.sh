@@ -1,5 +1,5 @@
 {
-  "extends": ["plugin:astro/recommended"],
+  "extends": ["plugin:astro/recommended", "@unocss"],
   "overrides": [
     {
       "files": ["*.astro"],

@@ -18,7 +18,7 @@ import CloseSidebar from "@icons/CloseSidebar.astro";
 </label>
 
 <aside
-  class="fixed right-[-300px] top-0 z-20 flex h-full w-[300px] max-w-[90%] flex-col gap-2 border-l bg-white text-current transition-[right] duration-300 ease-in-out peer-checked:right-0 dark:border-l-zinc-700 dark:bg-zinc-900">
+  class="fixed right-[-300px] top-0 z-20 h-full max-w-[90%] w-[300px] flex flex-col gap-2 border-l bg-white text-current duration-300 ease-in-out peer-checked:right-0 dark:border-l-zinc-700 dark:bg-zinc-900">
   <label
     for="toggle"
     role="button"
@@ -30,7 +30,7 @@ import CloseSidebar from "@icons/CloseSidebar.astro";
     SIDEBAR_LINKS.map((link) => (
       <a
         href={link.href}
-        class="mx-4 rounded-md px-5 py-3 transition-all duration-300 hover:bg-gray-100 dark:border-zinc-700 dark:hover:bg-zinc-800">
+        class="mx-4 rounded-md px-5 py-3 transition-all duration-300 dark:border-zinc-700 hover:bg-zinc-100 dark:hover:bg-zinc-800">
         {link.title}
       </a>
     ))
@@ -42,5 +42,5 @@ import CloseSidebar from "@icons/CloseSidebar.astro";
   role="button"
   tabindex="0"
   aria-label="Close sidebar"
-  class="fixed left-0 top-0 -z-10 h-screen w-screen opacity-0 backdrop-blur transition-all duration-500 peer-checked:z-10 peer-checked:opacity-100">
+  class="fixed left-0 top-0 h-screen w-screen opacity-0 backdrop-blur transition-all duration-500 -z-10 peer-checked:z-10 peer-checked:opacity-100">
 </label>

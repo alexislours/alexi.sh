@@ -1,11 +1,12 @@
 import { defineConfig } from "astro/config";
 import sitemap from "@astrojs/sitemap";
-import tailwind from "@astrojs/tailwind";
 
 import mdx from "@astrojs/mdx";
 import remarkToc from "remark-toc";
 import rehypeSlug from "rehype-slug";
 import rehypeAutolinkHeadings from "rehype-autolink-headings";
+
+import UnoCSS from "unocss/astro";
 
 export default defineConfig({
   site: "https://alexi.sh",
@@ -20,7 +21,9 @@ export default defineConfig({
     sitemap({
       filter: (page) => page !== "https://alexi.sh/build/",
     }),
-    tailwind(),
     mdx(),
+    UnoCSS({
+      injectReset: true,
+    }),
   ],
 });

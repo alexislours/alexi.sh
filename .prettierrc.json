@@ -10,7 +10,7 @@
   "bracketSpacing": true,
   "singleAttributePerLine": true,
   "endOfLine": "auto",
-  "plugins": ["prettier-plugin-astro", "prettier-plugin-tailwindcss"],
+  "plugins": ["prettier-plugin-astro"],
   "overrides": [
     {
       "files": "*.astro",

@@ -16,7 +16,7 @@ const posts = (await getCollection("blog")).sort(
   <ul class="mb-5 flex flex-col gap-3">
     {
       posts.map((post) => (
-        <li class="rounded-lg bg-neutral-50 p-5 dark:bg-zinc-800">
+        <li class="rounded-lg bg-zinc-50 p-5 dark:bg-zinc-800">
           <a
             class="text-2xl font-bold leading-8 tracking-tight"
             href={`/blog/${post.slug}/`}>
@@ -31,7 +31,7 @@ const posts = (await getCollection("blog")).sort(
             <Tag tag={tag} />
           ))}
 
-          <div class="mt-3 max-w-none text-gray-500 dark:text-gray-400">
+          <div class="mt-3 max-w-none text-zinc-500 dark:text-zinc-400">
             {post.data.description}
           </div>
 

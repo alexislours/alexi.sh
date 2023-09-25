@@ -11,7 +11,7 @@ import Moon from "@icons/Moon.astro";
 </button>
 
 <script is:inline>
-  if (!document.getElementById("themeToggle").dataset.hasClickListener) {
+  const setToggleListener = () => {
     let toggleBtn = document.getElementById("themeToggle");
     const handleToggleClick = () => {
       const element = document.documentElement;
@@ -23,5 +23,9 @@ import Moon from "@icons/Moon.astro";
 
     toggleBtn.addEventListener("click", handleToggleClick);
     toggleBtn.dataset.hasClickListener = "true";
-  }
+  };
+
+  setToggleListener();
+
+  document.addEventListener("astro:after-swap", setToggleListener);
 </script>

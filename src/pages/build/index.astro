@@ -7,6 +7,7 @@ import * as packageLockJson from "@root/package-lock.json";
 
 const posts = await getCollection("blog");
 const projects = await getCollection("projects");
+const finds = await getCollection("finds");
 const uniqueTags = [...new Set(posts.map((post) => post.data.tags).flat())];
 
 const BUILD_TIME = new Date().toISOString();
@@ -16,8 +17,7 @@ const BUILD_TIME = new Date().toISOString();
   title={SITE_TITLE + " - Build Info"}
   description="Information about the current build of this site."
   breadcrumbs={[{ path: "/build", name: "Build" }]}>
-  <div
-    class="prose mb-10 max-w-none dark:prose-invert prose-code:before:hidden prose-code:after:hidden prose-pre:overflow-x-auto prose-pre:overflow-y-hidden prose-img:mx-auto">
+  <div class="mb-10 max-w-none prose dark:prose-invert">
     <h1>Build Info</h1>
     <ul>
       <li>
@@ -39,6 +39,9 @@ const BUILD_TIME = new Date().toISOString();
       </li>
       <li>
         Project count: <code>{projects.length}</code>
+      </li>
+      <li>
+        Find count: <code>{finds.length}</code>
       </li>
     </ul>
   </div>
