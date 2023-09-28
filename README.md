@@ -1,6 +1,6 @@
 # alexi.sh
 
-Code for my portfolio and blog built with Astro and Tailwind.
+Code for my portfolio and blog built with Astro and UnoCSS.
 
 ## License
 
