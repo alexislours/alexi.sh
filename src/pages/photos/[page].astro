@@ -1,0 +1,63 @@
+---
+import { Image } from "astro:assets";
+import BaseLayout from "@layouts/BaseLayout.astro";
+import { SITE_TITLE } from "@src/constants";
+import { PHOTOS } from "@root/src/utils/flickr";
+import type { Photo } from "@root/src/types/flickr";
+
+export async function getStaticPaths({ paginate }) {
+  const photoPages = PHOTOS;
+  return paginate(photoPages, { pageSize: 30 });
+}
+
+const { page } = Astro.props;
+---
+
+<BaseLayout
+  title={SITE_TITLE + " - Photos"}
+  description={"A gallery of my photos."}
+  breadcrumbs={[{ path: "/photos", name: "Photos" }]}
+  mainClass="max-w-6xl">
+  <div class="max-w-6xl w-full flex flex-wrap justify-center gap-2">
+    {
+      page.data.slice(0, 20).map((photo: Photo) => (
+        <a
+          href={"/photos/id/" + photo.id}
+          class="max-h-[300px] overflow-hidden rounded-lg">
+          <Image
+            transition:name={photo.id}
+            src={photo.url_l}
+            alt={photo.title}
+            height={600}
+            width={800}
+            class="h-full rounded-lg object-cover object-center md:w-[512px]"
+          />
+        </a>
+      ))
+    }
+
+    <div class="w-screen flex justify-center">
+      <div
+        class="mb-5 mt-5 max-w-[512px] w-full flex flex-row items-center justify-between px-10">
+        {
+          page.url.prev ? (
+            <a
+              href={page.url.prev}
+              class="flex items-center self-end text-4xl text-zinc-500 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-100">
+              ←
+            </a>
+          ) : null
+        }
+        {
+          page.url.next ? (
+            <a
+              href={page.url.next}
+              class="ml-auto flex items-center text-4xl text-zinc-500 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-100">
+              →
+            </a>
+          ) : null
+        }
+      </div>
+    </div>
+  </div>
+</BaseLayout>

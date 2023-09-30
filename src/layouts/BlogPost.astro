@@ -72,7 +72,6 @@ const { title, description, pubDate, updatedDate, heroImage, tags } =
       previousPost ? (
         <a
           href={"/blog/" + previousPost.slug}
-          data-sveltekit-reload
           class="flex items-center self-start text-sm text-zinc-500 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-100">
           <ArrowLeft />
           <span class="ml-2">{previousPost.data.title}</span>
@@ -85,7 +84,6 @@ const { title, description, pubDate, updatedDate, heroImage, tags } =
       nextPost ? (
         <a
           href={"/blog/" + nextPost.slug}
-          data-sveltekit-reload
           class="flex items-center self-end text-sm text-zinc-500 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-100">
           <span class="mr-2">{nextPost.data.title}</span>
           <ArrowRight />

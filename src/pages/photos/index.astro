@@ -4,7 +4,7 @@ import BaseLayout from "@layouts/BaseLayout.astro";
 import { SITE_TITLE } from "@src/constants";
 import { PHOTOS } from "@root/src/utils/flickr";
 
-const photos = PHOTOS;
+const photos = PHOTOS.slice(0, 30);
 ---
 
 <BaseLayout
@@ -16,7 +16,7 @@ const photos = PHOTOS;
     {
       photos.map((photo) => (
         <a
-          href={"/photos/" + photo.id}
+          href={"/photos/id/" + photo.id}
           class="max-h-[300px] overflow-hidden rounded-lg">
           <Image
             transition:name={photo.id}
@@ -29,5 +29,13 @@ const photos = PHOTOS;
         </a>
       ))
     }
+    <div
+      class="mb-5 mt-5 max-w-6xl w-full flex flex-col items-center justify-between gap-10 md:gap-2">
+      <a
+        href={"/photos/2"}
+        class="flex items-center self-end text-4xl text-zinc-500 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-100">
+        →
+      </a>
+    </div>
   </div>
 </BaseLayout>
