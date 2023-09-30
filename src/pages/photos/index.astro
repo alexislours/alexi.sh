@@ -1,30 +1,10 @@
 ---
-import Flickr from "flickr-sdk";
-import type { UserPhotos, Photo } from "@typedefs/flickr";
 import { Image } from "astro:assets";
 import BaseLayout from "@layouts/BaseLayout.astro";
 import { SITE_TITLE } from "@src/constants";
-const flickr = new Flickr(import.meta.env.FLICKR_API_KEY);
+import { PHOTOS } from "@root/src/utils/flickr";
 
-const photos: Photo[] = [];
-let page = 1;
-
-const getPhotos = async () => {
-  const { body } = (await flickr.people.getPhotos({
-    user_id: import.meta.env.FLICKR_USER_ID,
-    extras: "geo,date_taken,url_o,url_l",
-    page,
-  })) as { body: UserPhotos };
-
-  photos.push(...body.photos.photo);
-
-  if (body.photos.page < body.photos.pages) {
-    page++;
-    await getPhotos();
-  }
-};
-
-await getPhotos();
+const photos = PHOTOS;
 ---
 
 <BaseLayout
@@ -35,13 +15,18 @@ await getPhotos();
   <div class="max-w-6xl w-full flex flex-wrap justify-center gap-2">
     {
       photos.map((photo) => (
-        <Image
-          src={photo.url_l}
-          alt={photo.title}
-          height={300}
-          width={512}
-          class="max-h-[300px] rounded-lg object-cover"
-        />
+        <a
+          href={"/photos/" + photo.id}
+          class="max-h-[300px] overflow-hidden rounded-lg">
+          <Image
+            transition:name={photo.id}
+            src={photo.url_l}
+            alt={photo.title}
+            height={600}
+            width={800}
+            class="h-full rounded-lg object-cover object-center md:w-[512px]"
+          />
+        </a>
       ))
     }
   </div>

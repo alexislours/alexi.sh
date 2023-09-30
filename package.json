@@ -24,7 +24,7 @@
     "@astrojs/mdx": "^1.1.0",
     "@astrojs/rss": "^3.0.0",
     "@astrojs/sitemap": "^3.0.0",
-    "astro": "^3.2.0",
+    "astro": "3.1.4",
     "flickr-sdk": "^6.2.1",
     "markdown-it": "^13.0.2",
     "rehype-autolink-headings": "^7.0.0",

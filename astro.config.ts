@@ -18,7 +18,7 @@ export default defineConfig({
     inlineStylesheets: "auto",
   },
   image: {
-    domains: ["live.staticflickr.com"],
+    domains: ["live.staticflickr.com", "api.mapbox.com"],
   },
   integrations: [
     sitemap({

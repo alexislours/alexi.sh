@@ -1,0 +1,83 @@
+---
+import { SITE_TITLE, SITE_DESCRIPTION } from "@src/constants";
+import { PHOTOS } from "@src/utils/flickr";
+import BaseLayout from "@layouts/BaseLayout.astro";
+import { Image } from "astro:assets";
+import type { Photo } from "@root/src/types/flickr";
+import Flickr from "@icons/Flickr.astro";
+
+export async function getStaticPaths() {
+  const photos = PHOTOS;
+  return photos.map((photo) => ({ params: { photo: photo.id } }));
+}
+
+const { photo = "" } = Astro.params;
+
+const photoInfo = PHOTOS.find((p) => p.id === photo) as Photo;
+---
+
+<BaseLayout
+  title={SITE_TITLE + " - Photo - " + photoInfo.title}
+  description={SITE_DESCRIPTION}
+  mainClass="flex-1 !max-w-6xl"
+  breadcrumbs={[{ path: "/photos", name: "Photos" }]}>
+  <div class="w-full flex justify-center">
+    <Image
+      transition:name={photoInfo.id}
+      src={photoInfo.url_4k || photoInfo.url_o}
+      alt={photoInfo.title}
+      width={1920}
+      height={1080}
+      class={"rounded-lg " +
+        (photoInfo.height_o >= photoInfo.width_o
+          ? "max-h-[800px] w-auto object-contain"
+          : "object-cover")}
+    />
+  </div>
+
+  <div class="mt-4 flex items-center justify-between">
+    <h1 class="text-3xl font-bold">
+      {photoInfo.title}
+    </h1>
+
+    <a
+      target="_blank"
+      href={"https://flickr.com/photos/" +
+        import.meta.env.FLICKR_USER_ID +
+        "/" +
+        photoInfo.id}
+      ><Flickr /></a
+    >
+  </div>
+  <p>
+    {
+      new Date(photoInfo.datetaken).toLocaleDateString("en-US", {
+        year: "numeric",
+        month: "long",
+        day: "numeric",
+      })
+    }
+  </p>
+  {
+    typeof photoInfo.longitude === "string" &&
+      typeof photoInfo.latitude === "string" && (
+        <div class="w-full flex justify-center">
+          <a
+            href={`https://www.openstreetmap.org/?mlat=${photoInfo.latitude}&mlon=${photoInfo.longitude}#map=14/${photoInfo.latitude}/${photoInfo.longitude}`}
+            target="_blank">
+            <Image
+              src={`https://api.mapbox.com/styles/v1/mapbox/satellite-v9/static/geojson(%7B%22type%22%3A%22Point%22%2C%22coordinates%22%3A%5B${
+                photoInfo.longitude
+              }%2C${photoInfo.latitude}%5D%7D)/${photoInfo.longitude},${
+                photoInfo.latitude
+              },14/500x500@2x?access_token=${import.meta.env.MAPBOX_TOKEN}`}
+              alt="Location"
+              width={1000}
+              height={1000}
+              class="mt-5 max-h-[500px] max-w-[500px] rounded-lg"
+            />
+          </a>
+        </div>
+      )
+  }
+</BaseLayout>

@@ -23,6 +23,7 @@ export type Photo = {
   context: number;
   url_o: string;
   url_l: string;
+  url_4k: string;
   height_o: number;
   width_o: number;
 };
