@@ -9,7 +9,8 @@
       "@content/*": ["src/content/*"],
       "@icons/*": ["src/components/icons/*"],
       "@root/*": ["./*"],
-      "@src/*": ["src/*"]
+      "@src/*": ["src/*"],
+      "@typedefs/*": ["src/types/*"]
     }
   }
 }
