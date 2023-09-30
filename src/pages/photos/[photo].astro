@@ -18,7 +18,13 @@ const photoInfo = PHOTOS.find((p) => p.id === photo) as Photo;
 
 <BaseLayout
   title={SITE_TITLE + " - Photo - " + photoInfo.title}
-  description={SITE_DESCRIPTION}
+  description={`${photoInfo.title} - taken on ${new Date(
+    photoInfo.datetaken
+  ).toLocaleDateString("en-US", {
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+  })}`}
   mainClass="flex-1 !max-w-6xl"
   breadcrumbs={[{ path: "/photos", name: "Photos" }]}>
   <div class="w-full flex justify-center">
