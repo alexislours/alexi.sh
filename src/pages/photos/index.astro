@@ -29,13 +29,15 @@ const photos = PHOTOS.slice(0, 30);
         </a>
       ))
     }
-    <div
-      class="mb-5 mt-5 max-w-6xl w-full flex flex-col items-center justify-between gap-10 md:gap-2">
-      <a
-        href={"/photos/2"}
-        class="flex items-center self-end text-4xl text-zinc-500 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-100">
-        →
-      </a>
+    <div class="w-screen flex justify-center">
+      <div
+        class="mb-5 mt-5 max-w-[512px] w-full flex flex-row items-center justify-between px-10">
+        <a
+          href={"/photos/2"}
+          class="ml-auto flex items-center text-4xl text-zinc-500 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-100">
+          →
+        </a>
+      </div>
     </div>
   </div>
 </BaseLayout>
