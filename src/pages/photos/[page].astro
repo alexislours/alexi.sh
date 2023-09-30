@@ -1,5 +1,5 @@
 ---
-import { Image } from "astro:assets";
+import { Image, getImage } from "astro:assets";
 import BaseLayout from "@layouts/BaseLayout.astro";
 import { SITE_TITLE } from "@src/constants";
 import { PHOTOS } from "@root/src/utils/flickr";
@@ -11,12 +11,19 @@ export async function getStaticPaths({ paginate }) {
 }
 
 const { page } = Astro.props;
+
+const image = await getImage({
+  src: page.data[0].url_4k || page.data[0].url_o,
+  width: 1920,
+  height: 1080,
+});
 ---
 
 <BaseLayout
   title={SITE_TITLE + " - Photos"}
   description={"A gallery of my photos."}
   breadcrumbs={[{ path: "/photos", name: "Photos" }]}
+  image={image.src}
   mainClass="max-w-6xl">
   <div class="max-w-6xl w-full flex flex-wrap justify-center gap-2">
     {
