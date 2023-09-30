@@ -79,9 +79,9 @@ const image = await getImage({
             href={`https://www.openstreetmap.org/?mlat=${photoInfo.latitude}&mlon=${photoInfo.longitude}#map=14/${photoInfo.latitude}/${photoInfo.longitude}`}
             target="_blank">
             <Image
-              src={`https://api.mapbox.com/styles/v1/mapbox/satellite-v9/static/geojson(%7B%22type%22%3A%22Point%22%2C%22coordinates%22%3A%5B${
+              src={`https://api.mapbox.com/styles/v1/mapbox/satellite-v9/static/pin-l-attraction+ff4f4f(${
                 photoInfo.longitude
-              }%2C${photoInfo.latitude}%5D%7D)/${photoInfo.longitude},${
+              },${photoInfo.latitude})/${photoInfo.longitude},${
                 photoInfo.latitude
               },14/500x500@2x?access_token=${import.meta.env.MAPBOX_TOKEN}`}
               alt="Location"
