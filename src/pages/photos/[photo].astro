@@ -1,8 +1,8 @@
 ---
-import { SITE_TITLE, SITE_DESCRIPTION } from "@src/constants";
+import { SITE_TITLE } from "@src/constants";
 import { PHOTOS } from "@src/utils/flickr";
 import BaseLayout from "@layouts/BaseLayout.astro";
-import { Image } from "astro:assets";
+import { Image, getImage } from "astro:assets";
 import type { Photo } from "@root/src/types/flickr";
 import Flickr from "@icons/Flickr.astro";
 
@@ -14,6 +14,12 @@ export async function getStaticPaths() {
 const { photo = "" } = Astro.params;
 
 const photoInfo = PHOTOS.find((p) => p.id === photo) as Photo;
+
+const image = await getImage({
+  src: photoInfo.url_4k || photoInfo.url_o,
+  width: 1920,
+  height: 1080,
+});
 ---
 
 <BaseLayout
@@ -26,11 +32,12 @@ const photoInfo = PHOTOS.find((p) => p.id === photo) as Photo;
     day: "numeric",
   })}`}
   mainClass="flex-1 !max-w-6xl"
+  image={image.src}
   breadcrumbs={[{ path: "/photos", name: "Photos" }]}>
   <div class="w-full flex justify-center">
     <Image
       transition:name={photoInfo.id}
-      src={photoInfo.url_4k || photoInfo.url_o}
+      src={image.src}
       alt={photoInfo.title}
       width={1920}
       height={1080}
