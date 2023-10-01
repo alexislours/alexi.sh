@@ -41,6 +41,7 @@ const exifData = await getExif(photoInfo.id);
     <Image
       transition:name={photoInfo.id}
       src={image.src}
+      loading="eager"
       alt={photoInfo.title}
       width={1920}
       height={1080}
