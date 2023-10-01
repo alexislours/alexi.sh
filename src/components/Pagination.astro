@@ -28,67 +28,56 @@ const paginationClass =
 
 <div class="flex items-center">
   {
-    page.currentPage > 2 && (
-      <a
-        href={"/photos/1"}
-        class={paginationClass}>
-        <DoubleChevronLeft />
-      </a>
-    )
-  }
-  {
     page.currentPage > 1 && (
-      <a
-        href={"/photos/" + (page.currentPage - 1)}
-        class={paginationClass}>
-        <ChevronLeft />
-      </a>
-    )
-  }
-  {
-    page.currentPage > 1 && (
-      <a
-        href={"/photos/" + (page.currentPage - 1)}
-        class={paginationClass}>
-        {page.currentPage - 1}
-      </a>
+      <>
+        <a
+          href="/photos/1"
+          class={paginationClass}>
+          <DoubleChevronLeft />
+        </a>
+        <a
+          href={`/photos/${page.currentPage - 1}`}
+          class={paginationClass}>
+          <ChevronLeft />
+        </a>
+        <a
+          href={`/photos/${page.currentPage - 1}`}
+          class={paginationClass}>
+          {page.currentPage - 1}
+        </a>
+      </>
     )
   }
 
   <a
-    href={"/photos/" + page.currentPage}
-    class={paginationClass + " !bg-zinc-200 !dark:bg-zinc-700"}>
+    href={`/photos/${page.currentPage}`}
+    class={`${paginationClass} !bg-zinc-200 !dark:bg-zinc-700`}>
     {page.currentPage}
   </a>
 
   {
     page.currentPage < page.lastPage && (
-      <a
-        href={"/photos/" + (page.currentPage + 1)}
-        class={paginationClass}>
-        {page.currentPage + 1}
-      </a>
-    )
-  }
-  {
-    page.currentPage < page.lastPage && (
-      <a
-        href={"/photos/" + (page.currentPage + 1)}
-        class={paginationClass}>
-        <ChevronRight />
-      </a>
-    )
-  }
-  {
-    page.currentPage < page.lastPage - 1 && (
-      <a
-        href={"/photos/" + page.lastPage}
-        class={paginationClass}>
-        <DoubleChevronRight />
-      </a>
+      <>
+        <a
+          href={`/photos/${page.currentPage + 1}`}
+          class={paginationClass}>
+          {page.currentPage + 1}
+        </a>
+        <a
+          href={`/photos/${page.currentPage + 1}`}
+          class={paginationClass}>
+          <ChevronRight />
+        </a>
+        <a
+          href={`/photos/${page.lastPage}`}
+          class={paginationClass}>
+          <DoubleChevronRight />
+        </a>
+      </>
     )
   }
 </div>
-<div class="mt-4 text-sm text-zinc-600 dark:text-white">
+
+<div class="mt-2 text-sm text-zinc-600 dark:text-white">
   {page.start + 1} - {page.end + 1} of {page.total} photos
 </div>
