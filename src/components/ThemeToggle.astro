@@ -10,7 +10,7 @@ import Moon from "@icons/Moon.astro";
   <Moon />
 </button>
 
-<script is:inline>
+<script>
   const setToggleListener = () => {
     let toggleBtn = document.getElementById("themeToggle");
     const handleToggleClick = () => {
@@ -21,8 +21,7 @@ import Moon from "@icons/Moon.astro";
       localStorage.setItem("theme", isDark ? "dark" : "light");
     };
 
-    toggleBtn.addEventListener("click", handleToggleClick);
-    toggleBtn.dataset.hasClickListener = "true";
+    toggleBtn?.addEventListener("click", handleToggleClick);
   };
 
   setToggleListener();
