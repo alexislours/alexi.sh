@@ -67,7 +67,7 @@ const exifData = await getExif(photoInfo.id);
       ><Flickr /></a
     >
   </div>
-  <p class="mb-4">
+  <p class="mb-2 text-zinc-600 dark:text-zinc-300">
     {
       new Date(photoInfo.datetaken).toLocaleDateString("en-US", {
         year: "numeric",
@@ -76,6 +76,13 @@ const exifData = await getExif(photoInfo.id);
       })
     }
   </p>
+
+  {
+    photoInfo.description._content && (
+      <p class="mb-4 whitespace-pre-wrap">{photoInfo.description._content}</p>
+    )
+  }
+
   <Exif exifData={exifData} />
   {
     typeof photoInfo.longitude === "string" &&

@@ -8,7 +8,7 @@ let page = 1;
 export async function getPhotos() {
   const { body } = (await flickr.people.getPhotos({
     user_id: import.meta.env.FLICKR_USER_ID,
-    extras: "geo,date_taken,url_o,url_l,url_4k",
+    extras: "geo,date_taken,url_o,url_l,url_4k,description",
     per_page: 500,
     content_type: "1",
     page,

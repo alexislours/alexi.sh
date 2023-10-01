@@ -26,6 +26,9 @@ export type Photo = {
   url_4k: string;
   height_o: number;
   width_o: number;
+  description: {
+    _content: string;
+  };
 };
 
 export type ExifResponse = {
