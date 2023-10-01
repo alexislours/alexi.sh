@@ -32,10 +32,12 @@ const paginationClass =
       <>
         <a
           href="/photos/1"
+          aria-label="First page"
           class={paginationClass}>
           <DoubleChevronLeft />
         </a>
         <a
+          aria-label="Previous page"
           href={`/photos/${page.currentPage - 1}`}
           class={paginationClass}>
           <ChevronLeft />
@@ -65,11 +67,13 @@ const paginationClass =
         </a>
         <a
           href={`/photos/${page.currentPage + 1}`}
+          aria-label="Next page"
           class={paginationClass}>
           <ChevronRight />
         </a>
         <a
           href={`/photos/${page.lastPage}`}
+          aria-label="Last page"
           class={paginationClass}>
           <DoubleChevronRight />
         </a>
