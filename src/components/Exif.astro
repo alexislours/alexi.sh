@@ -1,0 +1,93 @@
+---
+import type { ExifResponse } from "@src/types/flickr";
+import Aperture from "@icons/Aperture.astro";
+import ISO from "@icons/ISO.astro";
+import Exposure from "@icons/Exposure.astro";
+import FocalLength from "@icons/FocalLength.astro";
+
+const { exifData } = Astro.props as {
+  exifData: ExifResponse;
+};
+
+const exif = {
+  camera: exifData.photo.camera || null,
+  lens:
+    exifData.photo.exif.find((e) => e.tag === "LensModel")?.raw._content ||
+    null,
+  exposure:
+    exifData.photo.exif.find((e) => e.tag === "ExposureTime")?.raw?._content ||
+    null,
+  iso: exifData.photo.exif.find((e) => e.tag === "ISO")?.raw._content || null,
+  focal:
+    exifData.photo.exif.find((e) => e.tag === "FocalLength")?.clean?._content ||
+    null,
+  aperture:
+    exifData.photo.exif.find((e) => e.tag === "FNumber")?.clean?._content ||
+    null,
+};
+---
+
+<p>
+  {
+    exif.camera && (
+      <span>
+        <strong>Camera:&nbsp;</strong>
+        {exif.camera}
+      </span>
+    )
+  }
+</p>
+<p>
+  {
+    exif.lens && (
+      <span>
+        <strong>Lens:&nbsp;</strong>
+        {exif.lens}
+      </span>
+    )
+  }
+</p>
+
+{
+  exif.aperture && (
+    <p
+      class="flex items-center gap-2"
+      title="Aperture">
+      <Aperture />
+      <span>{exif.aperture}</span>
+    </p>
+  )
+}
+
+{
+  exif.focal && (
+    <p
+      class="flex items-center gap-2"
+      title="Focal length">
+      <FocalLength />
+      <span>{exif.focal}</span>
+    </p>
+  )
+}
+
+{
+  exif.exposure && (
+    <p
+      class="flex items-center gap-2"
+      title="Exposure">
+      <Exposure />
+      <span>{exif.exposure} sec</span>
+    </p>
+  )
+}
+
+{
+  exif.iso && (
+    <p
+      class="flex items-center gap-2"
+      title="ISO">
+      <ISO />
+      <span>{exif.iso}</span>
+    </p>
+  )
+}

@@ -1,7 +1,8 @@
 ---
 import { SITE_TITLE } from "@src/constants";
-import { PHOTOS } from "@src/utils/flickr";
+import { PHOTOS, getExif } from "@src/utils/flickr";
 import BaseLayout from "@layouts/BaseLayout.astro";
+import Exif from "@components/Exif.astro";
 import { Image, getImage } from "astro:assets";
 import type { Photo } from "@root/src/types/flickr";
 import Flickr from "@icons/Flickr.astro";
@@ -20,6 +21,8 @@ const image = await getImage({
   width: 1920,
   height: 1080,
 });
+
+const exifData = await getExif(photoInfo.id);
 ---
 
 <BaseLayout
@@ -62,7 +65,7 @@ const image = await getImage({
       ><Flickr /></a
     >
   </div>
-  <p>
+  <p class="mb-4">
     {
       new Date(photoInfo.datetaken).toLocaleDateString("en-US", {
         year: "numeric",
@@ -71,6 +74,7 @@ const image = await getImage({
       })
     }
   </p>
+  <Exif exifData={exifData} />
   {
     typeof photoInfo.longitude === "string" &&
       typeof photoInfo.latitude === "string" && (
@@ -83,7 +87,7 @@ const image = await getImage({
                 photoInfo.longitude
               },${photoInfo.latitude})/${photoInfo.longitude},${
                 photoInfo.latitude
-              },14/500x500@2x?access_token=${import.meta.env.MAPBOX_TOKEN}`}
+              },12/500x500@2x?access_token=${import.meta.env.MAPBOX_TOKEN}`}
               alt="Location"
               width={1000}
               height={1000}

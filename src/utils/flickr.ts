@@ -1,5 +1,5 @@
 import Flickr from "flickr-sdk";
-import type { Photo, UserPhotos } from "@root/src/types/flickr";
+import type { ExifResponse, Photo, UserPhotos } from "@root/src/types/flickr";
 const flickr = new Flickr(import.meta.env.FLICKR_API_KEY);
 
 const photos: Photo[] = [];
@@ -22,6 +22,14 @@ export async function getPhotos() {
   }
 
   return photos;
+}
+
+export async function getExif(photo_id: string): Promise<ExifResponse> {
+  return (
+    await flickr.photos.getExif({
+      photo_id,
+    })
+  ).body;
 }
 
 export const PHOTOS = await getPhotos();

@@ -7,8 +7,7 @@ import type { Photo } from "@root/src/types/flickr";
 import Pagination from "@components/Pagination.astro";
 
 export async function getStaticPaths({ paginate }) {
-  const photoPages = PHOTOS;
-  return paginate(photoPages, { pageSize: 30 });
+  return paginate(PHOTOS, { pageSize: 30 });
 }
 
 const { page } = Astro.props;

@@ -1,6 +1,7 @@
 ---
 import { SITE_TITLE } from "@src/constants";
 import { getCollection } from "astro:content";
+import { PHOTOS } from "@src/utils/flickr";
 import BaseLayout from "@layouts/BaseLayout.astro";
 import * as packageJson from "@root/package.json";
 import * as packageLockJson from "@root/package-lock.json";
@@ -42,6 +43,9 @@ const BUILD_TIME = new Date().toISOString();
       </li>
       <li>
         Find count: <code>{finds.length}</code>
+      </li>
+      <li>
+        Photo count: <code>{PHOTOS.length}</code>
       </li>
     </ul>
   </div>

@@ -27,3 +27,30 @@ export type Photo = {
   height_o: number;
   width_o: number;
 };
+
+export type ExifResponse = {
+  photo: PhotoExif;
+  stat: string;
+};
+
+export type PhotoExif = {
+  id: string;
+  secret: string;
+  server: string;
+  farm: number;
+  camera: string;
+  exif: Exif[];
+};
+
+export type Exif = {
+  tagspace: string;
+  tagspaceid: number;
+  tag: string;
+  label: string;
+  raw: Clean;
+  clean?: Clean;
+};
+
+export type Clean = {
+  _content: string;
+};
