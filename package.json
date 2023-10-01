@@ -4,7 +4,7 @@
   "repository": "https://gitlab.com/alexislours/alexi.sh",
   "author": "Alexis LOURS <alexislours@protonmail.com>",
   "type": "module",
-  "version": "1.3.0",
+  "version": "1.4.0",
   "private": true,
   "license": "GPL-3.0",
   "scripts": {
