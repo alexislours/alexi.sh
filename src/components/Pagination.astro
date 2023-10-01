@@ -1,0 +1,91 @@
+---
+import type { Photo } from "../types/flickr";
+import ChevronLeft from "@icons/ChevronLeft.astro";
+import ChevronRight from "@icons/ChevronRight.astro";
+import DoubleChevronLeft from "@icons/DoubleChevronLeft.astro";
+import DoubleChevronRight from "@icons/DoubleChevronRight.astro";
+type Page<T = any> = {
+  data: T[];
+  start: number;
+  end: number;
+  total: number;
+  currentPage: number;
+  size: number;
+  lastPage: number;
+  url: {
+    current: string;
+    prev: string | undefined;
+    next: string | undefined;
+  };
+};
+const { page } = Astro.props as {
+  page: Page<Photo>;
+};
+
+const paginationClass =
+  "focus:shadow-outline mr-1 h-8 w-8 flex items-center justify-center rounded-md text-sm text-zinc-600 transition-colors duration-150 hover:bg-zinc-200 dark:text-white dark:hover:bg-zinc-800 dark:bg-zinc-800 bg-zinc-100";
+---
+
+<div class="flex items-center">
+  {
+    page.currentPage > 2 && (
+      <a
+        href={"/photos/1"}
+        class={paginationClass}>
+        <DoubleChevronLeft />
+      </a>
+    )
+  }
+  {
+    page.currentPage > 1 && (
+      <a
+        href={"/photos/" + (page.currentPage - 1)}
+        class={paginationClass}>
+        <ChevronLeft />
+      </a>
+    )
+  }
+  {
+    page.currentPage > 1 && (
+      <a
+        href={"/photos/" + (page.currentPage - 1)}
+        class={paginationClass}>
+        {page.currentPage - 1}
+      </a>
+    )
+  }
+
+  <a
+    href={"/photos/" + page.currentPage}
+    class={paginationClass + " !bg-zinc-200 !dark:bg-zinc-700"}>
+    {page.currentPage}
+  </a>
+
+  {
+    page.currentPage < page.lastPage && (
+      <a
+        href={"/photos/" + (page.currentPage + 1)}
+        class={paginationClass}>
+        {page.currentPage + 1}
+      </a>
+    )
+  }
+  {
+    page.currentPage < page.lastPage && (
+      <a
+        href={"/photos/" + (page.currentPage + 1)}
+        class={paginationClass}>
+        <ChevronRight />
+      </a>
+    )
+  }
+  {
+    page.currentPage < page.lastPage - 1 && (
+      <a
+        href={"/photos/" + page.lastPage}
+        class={paginationClass}>
+        <DoubleChevronRight />
+      </a>
+    )
+  }
+</div>
