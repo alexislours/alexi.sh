@@ -34,7 +34,7 @@ const exifData = await getExif(photoInfo.id);
     month: "long",
     day: "numeric",
   })}`}
-  mainClass="flex-1 !max-w-6xl"
+  mainClass="flex-1 !max-w-5xl"
   image={image.src}
   breadcrumbs={[{ path: "/photos/1", name: "Photos" }]}>
   <div class="w-full flex justify-center">
@@ -43,11 +43,11 @@ const exifData = await getExif(photoInfo.id);
       src={image.src}
       loading="eager"
       alt={photoInfo.title}
-      width={1920}
-      height={1080}
+      width={1280}
+      height={720}
       class={"rounded-lg " +
         (photoInfo.height_o >= photoInfo.width_o
-          ? "max-h-[800px] w-auto object-contain"
+          ? "max-h-[720px] w-auto object-contain"
           : "object-cover")}
     />
   </div>
@@ -92,6 +92,7 @@ const exifData = await getExif(photoInfo.id);
               },12/500x500@2x?access_token=${import.meta.env.MAPBOX_TOKEN}`}
               alt="Location"
               width={1000}
+              quality={50}
               height={1000}
               class="mt-5 max-h-[500px] w-auto rounded-lg"
             />
