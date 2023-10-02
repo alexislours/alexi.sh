@@ -92,7 +92,7 @@ const exifData = await getExif(photoInfo.id);
             href={`https://www.openstreetmap.org/?mlat=${photoInfo.latitude}&mlon=${photoInfo.longitude}#map=14/${photoInfo.latitude}/${photoInfo.longitude}`}
             target="_blank">
             <Image
-              src={`https://api.mapbox.com/styles/v1/mapbox/outdoors-v12/static/pin-l-attraction+ff4f4f(${
+              src={`https://api.mapbox.com/styles/v1/mapbox/satellite-v9/static/pin-l-attraction+ff4f4f(${
                 photoInfo.longitude
               },${photoInfo.latitude})/${photoInfo.longitude},${
                 photoInfo.latitude
