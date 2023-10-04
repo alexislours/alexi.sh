@@ -1,0 +1,28 @@
+---
+import Warning from "@icons/Warning.astro";
+import Danger from "@icons/Danger.astro";
+import Info from "@icons/Info.astro";
+
+const { type, text } = Astro.props as {
+  type: "warning" | "info" | "danger";
+  text: string;
+};
+
+const colors: {
+  [key: string]: string;
+} = {
+  warning: "bg-yellow-200 text-yellow-950",
+  info: "bg-blue-200 text-blue-950",
+  danger: "bg-red-200 text-red-950",
+};
+---
+
+<div class={"rounded-lg not-prose p-4 " + colors[type]}>
+  <div class="mb-2 flex items-center gap-2">
+    {type === "warning" && <Warning />}
+    {type === "danger" && <Danger />}
+    {type === "info" && <Info />}
+    <p class="text-xl font-bold">{type.toUpperCase()}</p>
+  </div>
+  <p>{text}</p>
+</div>
