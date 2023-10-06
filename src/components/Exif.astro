@@ -13,6 +13,7 @@ const exif = {
   camera: exifData.photo.camera || null,
   lens:
     exifData.photo.exif.find((e) => e.tag === "LensModel")?.raw._content ||
+    exifData.photo.exif.find((e) => e.tag === "Lens")?.raw._content ||
     null,
   exposure:
     exifData.photo.exif.find((e) => e.tag === "ExposureTime")?.raw?._content ||
