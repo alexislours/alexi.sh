@@ -8,11 +8,15 @@ let page = 1;
 export async function getPhotos() {
   const { body } = (await flickr.people.getPhotos({
     user_id: import.meta.env.FLICKR_USER_ID,
-    extras: "geo,date_taken,url_o,url_l,url_4k,description",
+    extras: "geo,date_taken,url_o,url_l,url_4k,description,media",
     per_page: 500,
     content_type: "1",
     page,
   })) as { body: UserPhotos };
+
+  body.photos.photo = body.photos.photo.filter(
+    (photo) => photo.media === "photo"
+  );
 
   photos.push(...body.photos.photo);
 
@@ -29,7 +33,7 @@ export async function getExif(photo_id: string): Promise<ExifResponse> {
     await flickr.photos.getExif({
       photo_id,
     })
-  ).body;
+  ).body as ExifResponse;
 }
 
 export const PHOTOS = await getPhotos();

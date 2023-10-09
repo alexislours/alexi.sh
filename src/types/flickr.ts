@@ -26,6 +26,7 @@ export type Photo = {
   url_4k: string;
   height_o: number;
   width_o: number;
+  media: "photo" | "video";
   description: {
     _content: string;
   };
