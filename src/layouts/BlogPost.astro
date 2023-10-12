@@ -2,7 +2,7 @@
 import { getCollection, type CollectionEntry } from "astro:content";
 import Tag from "@components/Tag.astro";
 import FormattedDate from "@components/FormattedDate.astro";
-import { Picture } from "astro:assets";
+import { Image } from "astro:assets";
 import BaseLayout from "@layouts/BaseLayout.astro";
 import ArrowRight from "@icons/ArrowRight.astro";
 import ArrowLeft from "@icons/ArrowLeft.astro";
@@ -32,11 +32,9 @@ const { title, description, pubDate, updatedDate, heroImage, tags } =
     <div>
       {
         heroImage && (
-          <Picture
+          <Image
             width={1020}
             height={510}
-            formats={["webp", "avif"]}
-            widths={[510, 1020]}
             src={heroImage}
             class="mb-5 rounded-lg"
             alt=""

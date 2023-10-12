@@ -3,7 +3,7 @@ import { SITE_TITLE } from "@src/constants";
 import { PHOTOS, getExif } from "@src/utils/flickr";
 import BaseLayout from "@layouts/BaseLayout.astro";
 import Exif from "@components/Exif.astro";
-import { Picture, getImage } from "astro:assets";
+import { Image, getImage } from "astro:assets";
 import type { Photo } from "@root/src/types/flickr";
 import Flickr from "@icons/Flickr.astro";
 
@@ -38,14 +38,12 @@ const exifData = await getExif(photoInfo.id);
   image={image.src}
   breadcrumbs={[{ path: "/photos/1", name: "Photos" }]}>
   <div class="w-full flex justify-center">
-    <Picture
+    <Image
       transition:name={photoInfo.id}
       src={image.src}
       loading="eager"
       alt={photoInfo.title}
       width={1280}
-      widths={[400, 600, 900, 1280]}
-      formats={["avif", "webp"]}
       height={720}
       class={"rounded-lg " +
         (photoInfo.height_o >= photoInfo.width_o
@@ -93,18 +91,16 @@ const exifData = await getExif(photoInfo.id);
           <a
             href={`https://www.openstreetmap.org/?mlat=${photoInfo.latitude}&mlon=${photoInfo.longitude}#map=14/${photoInfo.latitude}/${photoInfo.longitude}`}
             target="_blank">
-            <Picture
+            <Image
               src={`https://api.mapbox.com/styles/v1/mapbox/satellite-v9/static/pin-l-attraction+ff4f4f(${
                 photoInfo.longitude
               },${photoInfo.latitude})/${photoInfo.longitude},${
                 photoInfo.latitude
               },12/500x500@2x?access_token=${import.meta.env.MAPBOX_TOKEN}`}
               alt="Location"
-              width={500}
-              densities={[1, 1.5, 2]}
-              formats={["avif", "webp"]}
+              width={1000}
               quality={50}
-              height={500}
+              height={1000}
               class="mt-5 max-h-[500px] w-auto rounded-lg"
             />
           </a>

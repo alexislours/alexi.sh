@@ -1,7 +1,7 @@
 ---
 import type { CollectionEntry } from "astro:content";
 type Props = CollectionEntry<"projects">["data"];
-import { Picture } from "astro:assets";
+import { Image } from "astro:assets";
 
 const formatProjectDate = (date: Date) => {
   const month = date.toLocaleString("default", { month: "long" });
@@ -25,23 +25,18 @@ const { title, description, subtitle, start, end, heroImage, href, at } =
           target="_blank"
           rel="noopener noreferrer"
           aria-label={`Link to ${title}`}>
-          <Picture
+          <Image
             alt={title}
-            densities={[1, 1.5, 2]}
-            width={500}
             src={heroImage}
-            formats={["webp", "avif"]}
             loading="lazy"
             class="aspect-video w-full object-cover object-center"
           />
         </a>
       ) : (
-        <Picture
+        <Image
           alt={title}
           src={heroImage}
-          formats={["webp", "avif"]}
           width={500}
-          densities={[1, 1.5, 2]}
           loading="lazy"
           class="aspect-video w-full object-cover object-center"
         />

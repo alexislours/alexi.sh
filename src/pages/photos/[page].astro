@@ -1,5 +1,5 @@
 ---
-import { getImage, Picture } from "astro:assets";
+import { Image, getImage } from "astro:assets";
 import BaseLayout from "@layouts/BaseLayout.astro";
 import { SITE_TITLE } from "@src/constants";
 import { PHOTOS } from "@root/src/utils/flickr";
@@ -31,15 +31,13 @@ const image = await getImage({
         <a
           href={"/photos/id/" + photo.id}
           class="max-h-[300px] overflow-hidden rounded-lg">
-          <Picture
+          <Image
             transition:name={photo.id}
             src={photo.url_l}
             alt={photo.title}
-            densities={[1, 1.5, 2]}
-            formats={["avif", "webp"]}
-            height={300}
-            width={450}
-            class="h-full rounded-lg object-cover object-center md:w-[450px]"
+            height={550}
+            width={800}
+            class="h-full rounded-lg object-cover object-center md:w-[512px]"
           />
         </a>
       ))

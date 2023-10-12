@@ -1,6 +1,6 @@
 ---
 import kingfisher from "@assets/error/kingfisher.png";
-import { Picture } from "astro:assets";
+import { Image } from "astro:assets";
 import Head from "@components/Head.astro";
 ---
 
@@ -9,11 +9,9 @@ import Head from "@components/Head.astro";
   description="Looks like the bird already left!"
 />
 <main class="h-screen w-screen flex flex-col items-center justify-center gap-4">
-  <Picture
+  <Image
     src={kingfisher}
     alt="Logo"
-    formats={["webp", "avif"]}
-    widths={[500, 900]}
     width="900"
     class="max-w-[90%] sm:max-w-[500px]"
   />
