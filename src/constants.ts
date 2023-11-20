@@ -8,4 +8,4 @@ export const SIDEBAR_LINKS: { title: string; href: string }[] = [
   { title: "Finds", href: "/finds" },
 ];
 export const EMAIL = "alexislours@protonmail.com";
-export const REPO = "https://gitlab.com/alexislours/alexi.sh";
+export const REPO = "https://github.com/alexislours/alexi.sh";

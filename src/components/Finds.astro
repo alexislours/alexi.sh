@@ -1,7 +1,7 @@
 ---
 import type { CollectionEntry } from "astro:content";
 type Props = CollectionEntry<"finds">["data"];
-import { Image } from "astro:assets";
+import { Picture } from "astro:assets";
 
 const { title, description, heroImage, href, pubDate } = Astro.props;
 ---
@@ -14,9 +14,14 @@ const { title, description, heroImage, href, pubDate } = Astro.props;
       target="_blank"
       rel="noopener noreferrer"
       aria-label={`Link to ${title}`}>
-      <Image
+      <Picture
         alt={title}
         src={heroImage}
+        width={332}
+        densities={[1, 2]}
+        fallbackFormat="jpg"
+        formats={["avif", "webp"]}
+        decoding="async"
         loading="lazy"
         class="aspect-video w-full object-cover object-center"
       />
