@@ -17,9 +17,6 @@ export default defineConfig({
   build: {
     inlineStylesheets: "auto",
   },
-  image: {
-    domains: ["live.staticflickr.com", "api.mapbox.com"],
-  },
   integrations: [
     sitemap({
       filter: (page) => page !== "https://alexi.sh/build/",
