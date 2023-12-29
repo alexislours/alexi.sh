@@ -1,17 +1,31 @@
-User-agent: *
-Allow: /
-
 User-agent: GPTBot
 Disallow: /
 
-User-agent: Googlebot
-Disallow: /images/*
+User-agent: omgilibot
+Disallow: /
+
+User-agent: omgili
+Disallow: /
+
+User-agent: Google-Extended
+Disallow: /
+
+User-agent: CCBot
+Disallow: /
+
+User-agent: anthropic-ai
+Disallow: /
+
+User-agent: cohere-ai
+Disallow: /
+
+User-agent: ChatGPT-User
+Disallow: /
 
 User-agent: *
-Disallow: /blog/tag/*
-Disallow: /build*
+Allow: /
 
-Sitemap: https://alexi.sh/sitemap-index.xml
+Sitemap: https://alexislours.com/sitemap-index.xml
 
 #                      __
 #  `       `          .^o ~\  `        `   `                `
